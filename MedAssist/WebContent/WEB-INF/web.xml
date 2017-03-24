@@ -28,4 +28,12 @@
     <servlet-name>logout</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>submitcase</servlet-name>
+    <servlet-class>com.medical.controller.SubmitCase</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>submitcase</servlet-name>
+    <url-pattern>/submitcase</url-pattern>
+  </servlet-mapping>
 </web-app>
