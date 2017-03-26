@@ -75,6 +75,7 @@ public class SignUp extends HttpServlet {
 			{
 				session.setAttribute("fname", patients.getFirstName());
 				session.setAttribute("lname", patients.getLastName());
+				session.setAttribute("email", patients.geteMail());
 				request.getRequestDispatcher("/patient.jsp").forward(request, response);  
 				
 			}
@@ -103,6 +104,7 @@ public class SignUp extends HttpServlet {
 			{
 				session.setAttribute("fname", doctor.getFirstName());
 				session.setAttribute("lname", doctor.getLastName());
+				session.setAttribute("email", doctor.geteMail());
 				request.getRequestDispatcher("/doctor.jsp").forward(request, response);  
 			}
 			else
@@ -131,6 +133,7 @@ public class SignUp extends HttpServlet {
 			{
 				session.setAttribute("fname", research.getFirstName());
 				session.setAttribute("lname", research.getLastName());
+				session.setAttribute("email", research.geteMail());
 				request.getRequestDispatcher("/researcher.jsp").forward(request, response);  
 			}
 			else

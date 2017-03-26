@@ -1,7 +1,15 @@
 package com.medical.model;
 
 public class Doctors {
-	String firstName,lastName,eMail,Contact,password;
+	String firstName,lastName,eMail,Contact,password,address;
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	public String getFirstName() {
 		return firstName;

@@ -63,8 +63,8 @@
 			  <ul class="nav navbar-nav">
 				<li class="active"><a href="Home.jsp">Home</a></li>
 				
-				<li><a href="#">Submit a case</a></li>
-				<li><a href="#">Patient History</a></li>
+				<li><a href="Symptoms.jsp">Submit a case</a></li>
+				<li><a href="history">Patient History</a></li>
 				<li><a href="#">Schedule an appointment</a></li>
 				
 				<li class="dropdown">

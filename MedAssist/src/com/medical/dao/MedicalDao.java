@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.medical.model.Comparison;
 import com.medical.model.Doctors;
 import com.medical.model.Patients;
+import com.medical.model.Report;
 import com.medical.model.Researchers;
 
 public class MedicalDao extends Dao implements DaoI {
@@ -245,6 +247,124 @@ public class MedicalDao extends Dao implements DaoI {
 		}
 		return result;
 	}
+	
+	public void enterCase(Report report) {
+
+
+		try {
+			System.out.println("inside try");
+			
+			conn = getConnection();
+			st = conn.prepareStatement(Queries.AddCase);
+			st.setString(1, report.getEmail());
+			st.setString(2, report.getDisease());
+			st.setString(3, report.getSymptoms());
+			st.setInt(4, report.getCase_id());
+			st.setString(5, report.getMedicines());
+			st.setDate(6,report.getDate());
+			st.execute();
+			conn.close();
+		}
+		catch (Exception e)
+		{
+			System.err.println("Got an exception!");
+			System.err.println(e.getMessage());
+		}
+		finally {
+			finallyMethod();
+		}
+	}
+	
+	public void getHistory(Report report) {
+
+
+		try {
+			System.out.println("inside try");
+			
+			conn = getConnection();
+			st = conn.prepareStatement(Queries.GetHistory);
+			st.setString(1, report.getEmail());
+			ResultSet rs = st.executeQuery();
+			if(rs.next())
+			{
+				report.setCase_id(rs.getInt("case_id"));
+				report.setDisease(rs.getString("disease"));
+				report.setSymptoms(rs.getString("symptom"));
+				report.setMedicines(rs.getString("medicines"));
+				report.setDate(rs.getDate("date"));
+			}
+			conn.close();
+		}
+		catch (Exception e)
+		{
+			System.err.println("Got an exception!");
+			System.err.println(e.getMessage());
+		}
+		finally {
+			finallyMethod();
+		}
+	}
+	
+	public void getCompValue(Comparison comparison) {
+
+
+		try {
+			System.out.println("inside try");
+			
+			conn = getConnection();
+			st = conn.prepareStatement(Queries.GetCompValues);
+			st.setString(1, comparison.getDisease());
+			ResultSet rs = st.executeQuery();
+			if(rs.next())
+			{	
+				comparison.setSpecialization(rs.getString("specialization"));
+			}
+			conn.close();
+		}
+		catch (Exception e)
+		{
+			System.err.println("Got an exception!");
+			System.err.println(e.getMessage());
+		}
+		finally {
+			finallyMethod();
+		}
+	}
+	public Doctors getDocDetails(Comparison comparison) {
+		Doctors doctor = new Doctors();
+
+		try {
+			System.out.println("inside try");
+			
+			conn = getConnection();
+			st = conn.prepareStatement(Queries.GetDocDetails);
+			st.setString(1, comparison.getSpecialization());
+			ResultSet rs = st.executeQuery();
+			if(rs.next())
+			{	
+				
+				doctor.setFirstName(rs.getString("firstname"));
+				doctor.setLastName(rs.getString("lastname"));
+				doctor.setAddress(rs.getString("address"));
+				
+				
+			}
+			
+			conn.close();
+			
+		}
+		catch (Exception e)
+		{
+			System.err.println("Got an exception!");
+			System.err.println(e.getMessage());
+		}
+		finally {
+			finallyMethod();
+		}
+		return doctor;
+	}
+	
+
 
 	public void finallyMethod()
 	{

@@ -10,4 +10,8 @@ public interface Queries {
 	public static final String PatSignupAccountCheck = "select * from patients where email=?";
 	public static final String DocSignupAccountCheck = "select firstname from doctors where email=?";
 	public static final String ResSignupAccountCheck = "select firstname from researchers where email=?";	
+	public static final String AddCase = "insert into reports(email,disease,symptom,case_id,medicines) values(?,?,?,?,?)";
+	public static final String GetHistory = "select case_id,disease,medicines,symptom,date from reports where email=?";
+	public static final String GetCompValues = "select specialization from comparison where disease=?";
+	public static final String GetDocDetails = "select firstname,lastname,address from doctors where specialization=?";
 }

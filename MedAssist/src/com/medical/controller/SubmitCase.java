@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -17,6 +18,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.medical.dao.MedicalDao;
+import com.medical.model.Patients;
+import com.medical.model.Report;
 
 /**
  * Servlet implementation class SubmitCase
@@ -24,6 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/SubmitCase")
 public class SubmitCase extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private MedicalDao dao;
 
        
     /**
@@ -31,6 +38,7 @@ public class SubmitCase extends HttpServlet {
      */
     public SubmitCase() {
         super();
+        dao = new MedicalDao();
         // TODO Auto-generated constructor stub
     }
 
@@ -48,7 +56,14 @@ public class SubmitCase extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		 String line = null;
-			String path = this.getServletContext().getRealPath("/CasesValues"); 
+		 HttpSession session=request.getSession();
+		 
+		 java.util.Date cDate = new java.util.Date();
+		 java.sql.Date currentDate = new java.sql.Date(cDate.getTime());
+		 String email = (String) session.getAttribute("email");
+		 Report report = new Report();
+		 StringBuilder listString = new StringBuilder();
+		 String path = this.getServletContext().getRealPath("/CasesValues"); 
 			HashMap<ArrayList<String>, String> hmAL = new HashMap<>();
 			  ArrayList<String> al = null ;
 			try {
@@ -101,6 +116,7 @@ public class SubmitCase extends HttpServlet {
 		for (Map.Entry< ArrayList<String>,String> entry : hmAL.entrySet())
 		{
 		   String sListName = entry.getValue();
+		   System.out.println("slistname"+sListName);
 		   ArrayList<String> saAccused = entry.getKey();
 		   
 		   Collections.sort(saAccused);
@@ -108,7 +124,22 @@ public class SubmitCase extends HttpServlet {
 		   
 		   if (saAccused.containsAll(aList))
 		   {
-		      System.out.println("Sucess");
+			   Random rand = new Random();
+			   int  n = rand.nextInt(10000) + 1;
+			   report.setEmail(email);
+			   report.setDate(currentDate);
+			   report.setDisease("abdominal");
+			   for(String s: aList)
+			   {
+			   report.setSymptoms(listString.append(s+",").toString());
+			   }
+			   
+			   report.setCase_id(n);
+			   report.setMedicines(sListName);
+			   dao.enterCase(report);
+			   request.setAttribute("Meds",sListName);
+			   request.setAttribute("date",currentDate);
+			   request.getRequestDispatcher("/Prescription.jsp").forward(request, response);  
 		   }
 		   
 		}

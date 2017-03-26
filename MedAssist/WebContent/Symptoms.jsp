@@ -62,7 +62,7 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 				
-				<li><a href="#">Patient History</a></li>
+				<li><a href="history">Patient History</a></li>
 				<li><a href="#">Schedule an appointment</a></li>
 				
 				<li class="dropdown">
@@ -103,34 +103,7 @@
    
     </div>
 
-    <div class="wrap">
-    <div class="adult">
-                    <h3>
-                        Adult Symptoms</h3>
-                    <ol class="ol">
-                        
-                                <li>
-                                    <a name="aPain" href="javascript:;" onclick="myfunction1();">Abdominal Pain</a>
-                                </li>
-                            
-                                                            
-                    </ol>
-                </div>
 
-                <div class="child" align="pull-right">
-                    <h3>
-                        Child Symptoms</h3>
-                    <ol class="ol">
-                        
-                                <li>
-                                    <a name="caPain" href="javascript:;" onclick="myfunction29();">Abdominal pain</a></li>
-                            
-                                                            
-                    </ol>
-             
-        </div>
-
- </div>
  </div>
 
    <div id="sideright">
@@ -162,6 +135,9 @@
 <!------------------------------------------------------------------------------------------------------------------>
 <form action="submitcase" id="myForm" method="post">
 <div id="abdominal">
+
+
+<input type="hidden" value="<%= session.getAttribute("email") %>" /></td>
         <div class="intro-content2">
         <div class="wrap">
             <div id="left" style="background-color: #fff";>
