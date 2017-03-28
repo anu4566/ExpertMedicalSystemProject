@@ -1,9 +1,3 @@
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="com.medical.dao.Dao" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,49 +89,22 @@
   	  <th class="text-center">Appointment</th>
     </tr>
 
-<%
-Connection conn = null;
-try
-{
-Class.forName("org.postgresql.Driver");
-String url="jdbc:postgresql://localhost/medicalsys";
-String username="anushabalu";
-String password="";
-conn=DriverManager.getConnection(url, username, password);
-String query1="select * from reports";
-Statement stmt=conn.createStatement();
-ResultSet rs=stmt.executeQuery(query1);
-while(rs.next())
-{
-%>
-
     <tr>
-      <td class="text-center"><%=rs.getInt("case_id") %></td>
+      <td class="text-center"><%=request.getAttribute("case_id") %></td>
       <td class="text-center">03/24/2017</td>
       <td class="text-center"><%=session.getAttribute("fname") %>  <%=session.getAttribute("lname") %></td>
-      <td class="text-center"><%=rs.getString("disease") %></td>
-       <td class="text-center"><%=rs.getString("symptom") %></td>
-        <td class="text-center"><%=rs.getString("medicines") %></td>
-      <td><button class="btn-skin" value="<%=rs.getString("disease") %>" name="sAppoint"  style="height: 50px;width: 250px; font-size: 15px;">Schedule an Appointment</button></td>
+      <td class="text-center"><%=request.getAttribute("disease") %></td>
+       <td class="text-center"><%=request.getAttribute("symptom") %></td>
+        <td class="text-center"><%=request.getAttribute("medicines") %></td>
+      <td><button class="btn-skin" value="<%=request.getAttribute("disease") %>" name="sAppoint"  style="height: 50px;width: 250px; font-size: 15px;">Schedule an Appointment</button></td>
     </tr>
-	</tbody>
 
-<%
-}
-%>
+  </tbody>
 
 </table>
-<%
-rs.close();
-stmt.close();
-}
-catch(Exception e)
-{
-e.printStackTrace();
-}
-%>
 </form>
 </div>
+
 
 	<footer>
 
