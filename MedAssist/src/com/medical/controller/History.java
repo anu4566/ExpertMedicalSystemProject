@@ -1,6 +1,8 @@
 package com.medical.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,12 +40,14 @@ public class History extends HttpServlet {
 		HttpSession session=request.getSession();
 		String email = (String) session.getAttribute("email");
 		report.setEmail(email);
-		dao.getHistory(report);
+        dao.getHistory(report);
+		
 		request.setAttribute("case_id",report.getCase_id());
 		request.setAttribute("disease", report.getDisease());
 		request.setAttribute("symptom",report.getSymptoms());
 		request.setAttribute("medicines", report.getMedicines());
 		request.setAttribute("date", report.getDate());
+		
 		request.getRequestDispatcher("/PatHistory.jsp").forward(request, response);  
 		
 		

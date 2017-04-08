@@ -1,3 +1,10 @@
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -82,22 +89,75 @@
 
 <div class="intro-content1">
 	<h1 style="margin-left: auto;margin-right: auto;color: #3fbbc0;"><strong>Schedule Appointment</strong></h1><br>
-	<ul class="nav nav-tabs nav-justified">
-		<li class="active"><a href="#home" data-toggle="tab"><img src="https://image.freepik.com/free-photo/doctor-smiling-with-stethoscope_1154-36.jpg" alt="" width="200" height="200" /></a></li>
-		<li><a href="#about" data-toggle="tab"><img src="https://www.robertoamore.com/public/themes/assets/images/contents/bob_love_white.png" alt="" width="150" height="200" /></a></li>
-		<li><a href="#contact" data-toggle="tab"><img src="http://numactive.ca/wp-content/uploads/2013/05/doctor.jpg" alt="" width="150" height="200" /></a></li>
-	</ul>
+	
+	
+		
+		<h5 style="margin-top: 5%;left: 31%; position:absolute;color: #3fbbc0;"><strong> Please choose the Doctor:</strong></h5>
+		<table style="margin-top: 5%;left: 57%; position:absolute;">
+       <tr><td>
+		
+		    <%
+Connection conn = null;
 
-	<div class="tab-content">
-		<div class="tab-pane fade in active" id="home">
-		<br><br>
-			<h3 style="margin-left: 100px;margin-bottom: 0px;"><strong>Dr. <%=request.getAttribute("dfname") %> <%=request.getAttribute("dlname") %>, MD</strong></h3>
-			<h4 style="margin-left: 100px;"><%=request.getAttribute("special") %></h4>
-			<h5 style="margin-left: 100px;"><%=request.getAttribute("address") %></h4>
-			<hr style="height:1px;border:none;color:#333;background-color:#333;" />
+try
+{
+Class.forName("org.postgresql.Driver");
+String url="jdbc:postgresql://localhost/medicalsys";
+String username="anushabalu";
+String password="";
+conn=DriverManager.getConnection(url, username, password);
+String disease=(String) session.getAttribute("dis");
+String query1="select specialization from comparison where disease=?";
+PreparedStatement ps = conn.prepareStatement(query1);
+ps.setString(1,disease);
+ResultSet rs = ps.executeQuery();
 
-			<form style="margin-left: 100px; font-size: 15px;">
-  				<h5 style="margin-left: 100px;"><strong>Patient Information</strong></h5>
+if(rs.next())
+{
+	String spl = rs.getString("specialization");
+	System.out.println(spl);
+	String query2="select firstname,lastname,address from doctors where specialization=?";
+	ps = conn.prepareStatement(query2);
+	ps.setString(1, spl.trim());
+	rs = ps.executeQuery();
+	System.out.println(rs.wasNull());
+	System.out.println("query executed");
+	while (rs.next())
+	{
+		System.out.println("am here");
+%>
+
+	
+       <input type="radio" name="docName" value="<%=rs.getString("firstname") %>"/>Dr. <%=rs.getString("firstname") %> <%=rs.getString("lastname") %>
+       
+       
+  	
+			
+		<!--  <hr style="height:1px;border:none;color:#333;background-color:#333;" />-->
+
+
+     
+
+	
+	
+	
+	<%
+ }
+}
+rs.close();
+ps.close();
+conn.close();
+}
+catch(Exception e)
+{
+e.printStackTrace();
+}
+%>
+</td></tr>
+</table>
+	<form style="margin-left: 100px;margin-top: 30%; font-size: 15px;">
+			
+  				<h5 style="margin-left: 100px; margin-top:15%;"><strong>Patient Information</strong></h5>
   				<label for="fname">First Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
   				<input type="text" id="fname" name="fname"><br>
   				<label for="lname">Last Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
@@ -132,104 +192,11 @@
     					<option value="months">months</option>
     					<option value="years">years</option>
   				</select>
-  				<div style="padding-left: 30%; margin-top: 20px;"><input type="button" value="Send Request" class="btn-skin" /></div>
-			</form>
+  				<div style="padding-left: 30%; margin-top: 20px;"><input type="button" onclick="document.forms[0].action = 'PresDone.jsp'; return true;" value="Send Request" class="btn-skin" /></div>
+			
 		</div>
-		<div class="tab-pane fade" id="about">
-		<br><br>
-			<h3 style="margin-left: 100px;margin-bottom: 0px;"><strong>Dr. Neil Patrick, MD</strong></h3>
-			<h4 style="margin-left: 100px;">OB-GYN</h4>
-			<h5 style="margin-left: 100px;">1757 Bowers street, Jersey City, NJ 07307</h4>
-			<hr style="height:1px;border:none;color:#333;background-color:#333;" />
-
-			<form style="margin-left: 100px; font-size: 15px;">
-  				<h5 style="margin-left: 100px;"><strong>Patient Information</strong></h5>
-  				<label for="fname">First Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  				<input type="text" id="fname" name="fname"><br>
-  				<label for="lname">Last Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  				<input type="text" id="lname" name="lname"><br>
-				<label for="phone">Primary Phone</label>
-  				<input type="number" id="phone" name="phone"><br>
-				<label for="emailid">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  				<input type="email" id="emailid" name="emailid"><br>
-  				<h5 style="margin-left: 100px;margin-top: 50px;"><strong>Patient Insurance Information</strong></h5>
-  				<h6>Does the patient have health insurance?</h6>
-  				<ul class="checkbox-grid" style="margin-left: 0px; padding-left: 0px;">
-            		<li><input type="checkbox" name="text1" value="value1" /><label for="text1">Yes</label></li>
-            		<li><input type="checkbox" name="text1" value="value2" /><label for="text1">No</label></li>
-            	</ul>
-  				<h5 style="margin-left: 100px;margin-top: 100px;"><strong>Medical Concern</strong></h5>
-  				<h6>What is the primary medical problem or diagnosis for the appointment request?</h6>
-  				<textarea style="width: 50%; height:100px;"></textarea>
-				<h6 style="margin-top: 20px;">Are there additional medical problems the patient needs assessed during this visit?</h6>
-  				<textarea style="width: 50%; height:100px;"></textarea>
-  				<h6 style="margin-top: 20px;">How long has the patient had this problem?</h6>
-  				 <select name="digits">
-    					<option value="one">1</option>
-    					<option value="two">2</option>
-    					<option value="three">3</option>
-    					<option value="four">4</option>
-    					<option value="five">5</option>
-    					<option value="six">6</option>
-  				</select>
-  				<select name="days">
-    					<option value="days">days</option>
-    					<option value="weeks">weeks</option>
-    					<option value="months">months</option>
-    					<option value="years">years</option>
-  				</select>
-  				<div style="padding-left: 30%; margin-top: 20px;"><input type="button" value="Send Request" class="btn-skin" /></div>
-			</form>
-		</div>
-		<div class="tab-pane fade" id="contact">
-		<br><br>
-			<h3 style="margin-left: 100px;margin-bottom: 0px;"><strong>Dr. Glen Maxwell, MD</strong></h3>
-			<h4 style="margin-left: 100px;">OB-GYN</h4>
-			<h5 style="margin-left: 100px;">1590 Libert Street, Jersey City, NJ 07306</h4>
-			<hr style="height:1px;border:none;color:#333;background-color:#333;" />
-
-			<form style="margin-left: 100px; font-size: 15px;">
-  				<h5 style="margin-left: 100px;"><strong>Patient Information</strong></h5>
-  				<label for="fname">First Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  				<input type="text" id="fname" name="fname"><br>
-  				<label for="lname">Last Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  				<input type="text" id="lname" name="lname"><br>
-				<label for="phone">Primary Phone</label>
-  				<input type="number" id="phone" name="phone"><br>
-				<label for="emailid">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  				<input type="email" id="emailid" name="emailid"><br>
-  				<h5 style="margin-left: 100px;margin-top: 50px;"><strong>Patient Insurance Information</strong></h5>
-  				<h6>Does the patient have health insurance?</h6>
-  				<ul class="checkbox-grid" style="margin-left: 0px; padding-left: 0px;">
-            		<li><input type="checkbox" name="text1" value="value1" /><label for="text1">Yes</label></li>
-            		<li><input type="checkbox" name="text1" value="value2" /><label for="text1">No</label></li>
-            	</ul>
-  				<h5 style="margin-left: 100px;margin-top: 100px;"><strong>Medical Concern</strong></h5>
-  				<h6>What is the primary medical problem or diagnosis for the appointment request?</h6>
-  				<textarea style="width: 50%; height:100px;"></textarea>
-				<h6 style="margin-top: 20px;">Are there additional medical problems the patient needs assessed during this visit?</h6>
-  				<textarea style="width: 50%; height:100px;"></textarea>
-  				<h6 style="margin-top: 20px;">How long has the patient had this problem?</h6>
-  				 <select name="digits">
-    					<option value="one">1</option>
-    					<option value="two">2</option>
-    					<option value="three">3</option>
-    					<option value="four">4</option>
-    					<option value="five">5</option>
-    					<option value="six">6</option>
-  				</select>
-  				<select name="days">
-    					<option value="days">days</option>
-    					<option value="weeks">weeks</option>
-    					<option value="months">months</option>
-    					<option value="years">years</option>
-  				</select>
-  				<div style="padding-left: 30%; margin-top: 20px;"><input type="button" value="Send Request" class="btn-skin" /></div>
-			</form>
-		</div>
-	</div>		
-</div>
-
+	
+</form>
 <!-- -------------------------------------------------------------------------------------------------- -->
 	<footer>
 	
@@ -349,6 +316,12 @@
 	<script src="js/nivo-lightbox.min.js"></script>
     <script src="js/custom.js"></script>
     <script type="text/javascript">
+    
+    
+    var optionVal = document.getElementById("docNames");
+    var strUser = optionVal.options[optionVal.selectedIndex].value;
+    
+    
     function printDiv(divName) {
      var printContents = document.getElementById(divName).innerHTML;
      var originalContents = document.body.innerHTML;

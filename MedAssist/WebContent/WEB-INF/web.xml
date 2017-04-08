@@ -36,20 +36,13 @@
     <servlet-name>submitcase</servlet-name>
     <url-pattern>/submitcase</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>history</servlet-name>
-    <servlet-class>com.medical.controller.History</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>history</servlet-name>
-    <url-pattern>/history</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>scheduleAppointment</servlet-name>
+ <servlet>
+    <servlet-name>schedule</servlet-name>
     <servlet-class>com.medical.controller.ScheduleAppointment</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>scheduleAppointment</servlet-name>
-    <url-pattern>/scheduleAppointment</url-pattern>
+    <servlet-name>schedule</servlet-name>
+    <url-pattern>/schedule</url-pattern>
   </servlet-mapping>
+
 </web-app>

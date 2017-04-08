@@ -6,6 +6,7 @@ public class Report {
 	
 	int case_id;
 	String email,disease, symptoms, medicines;
+	
 	Date date;
 	public Date getDate() {
 		return date;

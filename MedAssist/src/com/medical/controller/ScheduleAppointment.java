@@ -42,17 +42,16 @@ public class ScheduleAppointment extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String disease= request.getParameter("sAppoint");
-		Comparison comparison = new Comparison();
+		String doc= request.getParameter("docNames");
 		Doctors doctor = new Doctors();
-		comparison.setDisease(disease);
-		dao.getCompValue(comparison);
-		doctor = dao.getDocDetails(comparison);
+		doctor.setFirstName(doc);
+		dao.getDocDetails(doctor);
 		System.out.println("inside ser:"+doctor.getFirstName());
 		request.setAttribute("dfname",doctor.getFirstName());
+		request.setAttribute("spln",doctor.getSpecialization());
 		request.setAttribute("dlname",doctor.getLastName());
 		request.setAttribute("address",doctor.getAddress());
-		request.setAttribute("special",comparison.getSpecialization());
+		
 		request.getRequestDispatcher("/Appointment.jsp").forward(request, response);  
 		
 	}

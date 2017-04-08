@@ -330,22 +330,21 @@ public class MedicalDao extends Dao implements DaoI {
 			finallyMethod();
 		}
 	}
-	public Doctors getDocDetails(Comparison comparison) {
-		Doctors doctor = new Doctors();
-
+	public void getDocDetails(Doctors doctors) {
+		
 		try {
 			System.out.println("inside try");
 			
 			conn = getConnection();
 			st = conn.prepareStatement(Queries.GetDocDetails);
-			st.setString(1, comparison.getSpecialization());
+			st.setString(1,doctors.getFirstName());
 			ResultSet rs = st.executeQuery();
 			if(rs.next())
 			{	
 				
-				doctor.setFirstName(rs.getString("firstname"));
-				doctor.setLastName(rs.getString("lastname"));
-				doctor.setAddress(rs.getString("address"));
+				doctors.setSpecialization(rs.getString("specialization"));
+				doctors.setLastName(rs.getString("lastname"));
+				doctors.setAddress(rs.getString("address"));
 				
 				
 			}
@@ -361,7 +360,7 @@ public class MedicalDao extends Dao implements DaoI {
 		finally {
 			finallyMethod();
 		}
-		return doctor;
+		
 	}
 	
 

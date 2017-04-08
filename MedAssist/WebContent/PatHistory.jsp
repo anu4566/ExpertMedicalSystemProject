@@ -1,8 +1,9 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.DriverManager" %>
-<%@ page import="com.medical.dao.Dao" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -82,7 +83,6 @@
 
 <div class="intro-content1" >
 	<h2 style="margin-left: auto;margin-right: auto;">Patient Medical History</h2><br>
-<form method=post action="scheduleAppointment">
 <table class="table table-bordered table-striped table-hover" style="margin-left: 50px;">
   <tbody>
     <tr>
@@ -104,11 +104,16 @@ String url="jdbc:postgresql://localhost/medicalsys";
 String username="anushabalu";
 String password="";
 conn=DriverManager.getConnection(url, username, password);
-String query1="select * from reports";
-Statement stmt=conn.createStatement();
-ResultSet rs=stmt.executeQuery(query1);
+String email = (String) session.getAttribute("email");
+System.out.println(email);
+String query1="select case_id,disease,medicines,symptom,date from reports where email=?";
+PreparedStatement ps = conn.prepareStatement(query1);
+ps.setString(1,email);
+ResultSet rs = ps.executeQuery();
+
 while(rs.next())
 {
+	System.out.println("Inside while");
 %>
 
     <tr>
@@ -118,7 +123,10 @@ while(rs.next())
       <td class="text-center"><%=rs.getString("disease") %></td>
        <td class="text-center"><%=rs.getString("symptom") %></td>
         <td class="text-center"><%=rs.getString("medicines") %></td>
-      <td><button class="btn-skin" value="<%=rs.getString("disease") %>" name="sAppoint"  style="height: 50px;width: 250px; font-size: 15px;">Schedule an Appointment</button></td>
+        <%String disease = rs.getString("disease");
+        session.setAttribute("dis",disease);
+        %>
+      <td><button class="btn-skin" onclick ="goTo()" value="<%=disease %>" name="sAppoint"  style="height: 50px;width: 250px; font-size: 15px;">Schedule an Appointment</button></td>
     </tr>
 	</tbody>
 
@@ -129,14 +137,14 @@ while(rs.next())
 </table>
 <%
 rs.close();
-stmt.close();
+ps.close();
+conn.close();
 }
 catch(Exception e)
 {
 e.printStackTrace();
 }
 %>
-</form>
 </div>
 
 	<footer>
@@ -248,6 +256,10 @@ e.printStackTrace();
 function callServlet()
 {
 	document.getElementsByName('sAppoint')[0].submit();
+}
+function goTo()
+{
+	window.location = 'Appointment.jsp';	
 }
 </script>
 	<!-- Core JavaScript Files -->

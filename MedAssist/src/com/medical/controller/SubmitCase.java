@@ -105,9 +105,9 @@ public class SubmitCase extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		String disease = (String) request.getAttribute("aPain");
-		System.out.println("disease"+disease);
-		String[] val = request.getParameterValues(disease);
+	//	String disease =  request.getParameter("AbdominalPain");
+	//	System.out.println("disease"+disease);
+		String[] val = request.getParameterValues("AbdominalPain");
 		ArrayList<String> aList = new ArrayList<String>();
 		
 		for(String s: val)
@@ -123,11 +123,11 @@ public class SubmitCase extends HttpServlet {
 		for (Map.Entry< ArrayList<String>,String> entry : hmAL.entrySet())
 		{
 		   String sListName = entry.getValue();
-		   System.out.println("slistname"+sListName);
+		   //System.out.println("slistname"+sListName);
 		   ArrayList<String> saAccused = entry.getKey();
 		   
 		   Collections.sort(saAccused);
-		   System.out.println(saAccused);
+		   //System.out.println(saAccused);
 		   
 		   if (saAccused.containsAll(aList))
 		   {
@@ -135,7 +135,7 @@ public class SubmitCase extends HttpServlet {
 			   int  n = rand.nextInt(10000) + 1;
 			   report.setEmail(email);
 			   report.setDate(currentDate);
-			   report.setDisease(disease);
+			   report.setDisease("AbdominalPain");
 			   for(String s: aList)
 			   {
 			   report.setSymptoms(listString.append(s+",").toString());
