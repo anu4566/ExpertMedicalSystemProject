@@ -65,7 +65,7 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 				
-				<li><a href="#">Patient History</a></li>
+				<li><a href="history">Patient History</a></li>
 				<li><a href="#">Schedule an appointment</a></li>
 				
 				<li class="dropdown">
@@ -105,7 +105,7 @@
 	        </div>
    
     </div>
-    <form action="submitcase" id="myform" method="post">
+    
     <div class="wrap">
     <div class="adult">
                     <h3>
@@ -113,11 +113,11 @@
                     <ol class="ol">
                         
                                 <li>
-                                    <a  href="javascript:;" onclick="myfunction1();">Abdominal Pain</a>
+                                    <a name="aPain" value="AbdominalPain" href="javascript:;" onclick="myfunction1();">Abdominal Pain</a>
                                 </li>
                             
                                 <li>
-                                    <a  href="javascript:;" onclick="myfunction2();">Blood in stool</a>
+                                    <a name="aPain" value="BloodInStool" href="javascript:;" onclick="myfunction2();">Blood in stool</a>
                                 </li>
                             
                                 <!--  <li>
@@ -125,15 +125,15 @@
                                 </li>-->
                             
                                 <li>
-                                    <a  href="javascript:;" onclick="myfunction4();">Constipation</a>
+                                    <a name="aPain" value="Constipation" href="javascript:;" onclick="myfunction4();">Constipation</a>
                                 </li>
                             
                                 <li>
-                                    <a href="javascript:;" onclick="myfunction5();">Cough</a>
+                                    <a name="aPain" value="Cough" href="javascript:;" onclick="myfunction5();">Cough</a>
                                 </li>
                             
                                 <li>
-                                    <a href="javascript:;" onclick="myfunction6();">Diarrhea</a>
+                                    <a name="aPain" value="Diarrhea" href="javascript:;" onclick="myfunction6();">Diarrhea</a>
                                 </li>
                             
 							<!--
@@ -236,13 +236,13 @@
                     <ol class="ol">
                         
                                 <li>
-                                    <a  href="javascript:;" onclick="myfunction29();">Abdominal pain</a></li>
+                                    <a name="cPain" value="CAbdominalPain" href="javascript:;" onclick="myfunction29();">Abdominal pain</a></li>
                             
                                 <li>
-                                    <a  href="javascript:;" onclick="myfunction30();">Constipation</a></li>
+                                    <a name="cPain" value="CConstipation" href="javascript:;" onclick="myfunction30();">Constipation</a></li>
                             
                                 <li>
-                                    <a  href="javascript:;" onclick="myfunction31();">Cough</a></li>
+                                    <a name="cPain" value="CCough" href="javascript:;" onclick="myfunction31();">Cough</a></li>
                             <!--
                                 <li>
                                     <a name="cPain" value="c_hearing" href="javascript:;" onclick="myfunction32();">Decreased hearing</a></li>
@@ -300,51 +300,40 @@
 
 <script type="text/javascript">
     function myfunction1() {
-    	
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
         document.getElementById("abdominal").style.display = "block";
-        request.setAttribute("aPain","AbdominalPain");
     }
     function myfunction2() {
-    	
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
         document.getElementById("bis").style.display = "block";
-        request.setAttribute("aPain","BloodInStool");
     }
     function myfunction3() {
-    	//request.setAttribute("aPain","AbdominalPain");
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
         document.getElementById("chestpaining").style.display = "block";
     }
     function myfunction4() {
-    	
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
         document.getElementById("Constipation").style.display = "block";
-        request.setAttribute("aPain","Constipation");
     }
     function myfunction5() {
-    	
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
         document.getElementById("cough").style.display = "block";
-        request.setAttribute("aPain","Cough");
     }
     function myfunction6() {
-    	
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
         document.getElementById("diarrhea").style.display = "block";
-        request.setAttribute("aPain","Diarrhea");
     }
     function myfunction7() {
         document.getElementById("middle").style.display = "none";
@@ -473,7 +462,6 @@
         document.getElementById("vision").style.display = "block";
     }
     function myfunction28() {
-    	request.setAttribute("aPain","CAbdominalPain");
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
@@ -481,21 +469,18 @@
     }
 
     function myfunction29() {
-    	request.setAttribute("aPain","CAbdominalPain");
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
         document.getElementById("CAbdominalPain").style.display = "block";
     }
     function myfunction30() {
-    	request.setAttribute("aPain","CConstipation");
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
         document.getElementById("CConstipation").style.display = "block";
     }
     function myfunction31() {
-    	request.setAttribute("aPain","CCough");
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
@@ -588,7 +573,7 @@
 </script>
 
 <!------------------------------------------------------------------------------------------------------------------>
-
+<form action="submitcase" id="myform" method="post">
 <div id="abdominal">
         <div class="intro-content2">
         <div class="wrap">
@@ -1011,7 +996,7 @@
     </div>
     
 </div>
-
+</form>
 <!--swallowing-------------------------------------------------------------------------------------------------------------->
 <!--
 <div id="swallowing">
