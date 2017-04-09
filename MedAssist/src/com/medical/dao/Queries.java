@@ -15,4 +15,5 @@ public interface Queries {
 	public static final String GetHistory = "select case_id,disease,medicines,symptom,date from reports where email=?";
 	public static final String GetCompValues = "select specialization from comparison where disease=?";
 	public static final String GetDocDetails = "select lastname,address,specialization from doctors where firstname=?";
+	public static final String AddAptDetails = "insert into appointment(pemail,demail,insurance,primarydetails,additional,days) values(?,?,?,?,?,?)";
 }

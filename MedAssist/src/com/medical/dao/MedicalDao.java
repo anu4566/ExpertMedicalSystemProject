@@ -1,9 +1,23 @@
 package com.medical.dao;
 
+import javax.mail.Authenticator;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Properties;
 
+import javax.mail.AuthenticationFailedException;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+import com.medical.model.AptDetails;
 import com.medical.model.Comparison;
 import com.medical.model.Doctors;
 import com.medical.model.Patients;
@@ -363,6 +377,33 @@ public class MedicalDao extends Dao implements DaoI {
 		
 	}
 	
+public void addAptDetails(AptDetails apt) {
+		
+		try {
+			System.out.println("inside try");
+			
+			conn = getConnection();
+			st = conn.prepareStatement(Queries.AddAptDetails);
+			st.setString(1,apt.getPatientEmail());
+			st.setString(2,apt.getDocEmail());
+			st.setString(3,apt.getMedInfo());
+			st.setString(4,apt.getProblem());
+			st.setString(5,apt.getAddProblems());
+			st.setString(6,apt.getDays());
+			st.execute();
+			conn.close();
+		}
+		catch (Exception e)
+		{
+			System.err.println("Got an exception!");
+			System.err.println(e.getMessage());
+		}
+		finally {
+			finallyMethod();
+		}
+		
+	}
+	
 
 
 	public void finallyMethod()
@@ -382,7 +423,41 @@ public class MedicalDao extends Dao implements DaoI {
 			}
 		}
 	}
+	
+	
+	public void sendEmail()
+	{
+		 Properties props = new Properties();    
+         props.put("mail.smtp.host", "smtp.gmail.com");    
+         props.put("mail.smtp.socketFactory.port", "587");    
+         props.put("mail.smtp.socketFactory.class",    
+                   "javax.net.ssl.SSLSocketFactory");    
+         props.put("mail.smtp.auth", "true");    
+         props.put("mail.smtp.port", "587");    
+         //get Session   
+         Session session = Session.getDefaultInstance(props,    
+          new javax.mail.Authenticator() {    
+          protected PasswordAuthentication getPasswordAuthentication() {    
+          return new PasswordAuthentication("anushabollyx@gmail.com","Anu@4566");  
+          }    
+         });    
+         //compose message    
+         try {    
+          MimeMessage message = new MimeMessage(session);    
+          message.addRecipient(Message.RecipientType.TO,new InternetAddress("anushabalu89@gmail.com"));    
+          message.setSubject("hello");    
+          message.setText("how are you");    
+          //send message  
+          Transport.send(message);    
+          System.out.println("message sent successfully");    
+         } catch (MessagingException e) {throw new RuntimeException(e);}    
+            
+   }  
 
+		
 
 }
+
+
+
 

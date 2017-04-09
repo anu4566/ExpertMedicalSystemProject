@@ -36,7 +36,7 @@
     <servlet-name>submitcase</servlet-name>
     <url-pattern>/submitcase</url-pattern>
   </servlet-mapping>
- <servlet>
+  <servlet>
     <servlet-name>schedule</servlet-name>
     <servlet-class>com.medical.controller.ScheduleAppointment</servlet-class>
   </servlet>
@@ -44,5 +44,12 @@
     <servlet-name>schedule</servlet-name>
     <url-pattern>/schedule</url-pattern>
   </servlet-mapping>
-
+  <servlet>
+    <servlet-name>docApp</servlet-name>
+    <servlet-class>com.medical.controller.DoctorAppointment</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>docApp</servlet-name>
+    <url-pattern>/docApp</url-pattern>
+  </servlet-mapping>
 </web-app>
