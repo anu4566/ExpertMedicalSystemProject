@@ -438,7 +438,7 @@ public void addAptDetails(AptDetails apt) {
          Session session = Session.getDefaultInstance(props,    
           new javax.mail.Authenticator() {    
           protected PasswordAuthentication getPasswordAuthentication() {    
-          return new PasswordAuthentication("anushabollyx@gmail.com","Anu@4566");  
+          return new PasswordAuthentication("","");  
           }    
          });    
          //compose message    
