@@ -72,7 +72,7 @@ public class DoctorAppointment extends HttpServlet {
 		apt.setAddProblems(addProblems);
 		apt.setDays(digits+" "+days );
 		dao.addAptDetails(apt);
-		dao.sendEmail();
+		//dao.sendEmail();
 		 
 		
 	}
