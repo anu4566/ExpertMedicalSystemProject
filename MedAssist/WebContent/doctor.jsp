@@ -62,9 +62,8 @@
 			  <ul class="nav navbar-nav">
 				<li class="active"><a href="Home.jsp">Home</a></li>
 				
-				<li><a href="#">Pick a case</a></li>
-				<li><a href="#">Rewards</a></li>
-				<li><a href="#">Medical Cases Archives</a></li>
+				<li><a href="viewappointment.jsp">Appointments</a></li>
+				<li><a href="SolveACase.jsp">Solve a case</a></li>
 				
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Account<b class="caret"></b></a>

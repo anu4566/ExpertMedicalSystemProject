@@ -52,4 +52,12 @@
     <servlet-name>docApp</servlet-name>
     <url-pattern>/docApp</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>prescribeMed</servlet-name>
+    <servlet-class>com.medical.controller.SendPrescriptionEmail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>prescribeMed</servlet-name>
+    <url-pattern>/prescribeMed</url-pattern>
+  </servlet-mapping>
 </web-app>

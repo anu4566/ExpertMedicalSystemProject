@@ -276,6 +276,7 @@ public class MedicalDao extends Dao implements DaoI {
 			st.setInt(4, report.getCase_id());
 			st.setString(5, report.getMedicines());
 			st.setDate(6,report.getDate());
+			st.setBoolean(7,report.isFlag());
 			st.execute();
 			conn.close();
 		}
@@ -377,8 +378,8 @@ public class MedicalDao extends Dao implements DaoI {
 		
 	}
 	
-public void addAptDetails(AptDetails apt) {
-		
+public Doctors addAptDetails(AptDetails apt) {
+	Doctors doctors = new Doctors();
 		try {
 			System.out.println("inside try");
 			
@@ -390,7 +391,24 @@ public void addAptDetails(AptDetails apt) {
 			st.setString(4,apt.getProblem());
 			st.setString(5,apt.getAddProblems());
 			st.setString(6,apt.getDays());
+			st.setString(7,apt.getDateTime());
 			st.execute();
+			System.out.println("inside dao before querry"+apt.getDocEmail());
+			PreparedStatement ps  = conn.prepareStatement(Queries.GetDocDetails);
+			ps.setString(1,apt.getDocEmail());
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next())
+			{	
+				
+				//System.out.println("DOC IN DAO"+rs.getString("firstname"));
+				doctors.setSpecialization(rs.getString("specialization"));
+				doctors.setLastName(rs.getString("lastname"));
+				doctors.setFirstName(apt.getDocEmail());
+				doctors.setAddress(rs.getString("address"));
+					
+			}
+			
 			conn.close();
 		}
 		catch (Exception e)
@@ -398,10 +416,11 @@ public void addAptDetails(AptDetails apt) {
 			System.err.println("Got an exception!");
 			System.err.println(e.getMessage());
 		}
+		
 		finally {
 			finallyMethod();
 		}
-		
+		return doctors;
 	}
 	
 
@@ -425,28 +444,33 @@ public void addAptDetails(AptDetails apt) {
 	}
 	
 	
-	public void sendEmail()
+	public void sendEmail(String subject,String msg,String email)
 	{
 		 Properties props = new Properties();    
          props.put("mail.smtp.host", "smtp.gmail.com");    
-         props.put("mail.smtp.socketFactory.port", "587");    
+         props.put("mail.smtp.socketFactory.port", "465");    
          props.put("mail.smtp.socketFactory.class",    
                    "javax.net.ssl.SSLSocketFactory");    
          props.put("mail.smtp.auth", "true");    
-         props.put("mail.smtp.port", "587");    
+         props.put("mail.smtp.port", "465");    
+         props.put("mail.smtp.socketFactory.fallback", "true");
+         props.put("mail.smtp.starttls.enable", "true");
+       
+
          //get Session   
          Session session = Session.getDefaultInstance(props,    
           new javax.mail.Authenticator() {    
           protected PasswordAuthentication getPasswordAuthentication() {    
-          return new PasswordAuthentication("","");  
+          return new PasswordAuthentication("medassistmedgroup@gmail.com","Spring2017!");  
           }    
          });    
          //compose message    
          try {    
           MimeMessage message = new MimeMessage(session);    
-          message.addRecipient(Message.RecipientType.TO,new InternetAddress("anushabalu89@gmail.com"));    
-          message.setSubject("hello");    
-          message.setText("how are you");    
+          message.addRecipient(Message.RecipientType.TO,new InternetAddress(email));    
+          message.setSubject("MedAssist Medical Group:"+subject); 
+          System.out.println("************:"+msg);
+          message.setText(msg+"\n\n\n Thanks,\n MedAssist Medical Group");    
           //send message  
           Transport.send(message);    
           System.out.println("message sent successfully");    
@@ -454,6 +478,10 @@ public void addAptDetails(AptDetails apt) {
             
    }  
 
+	public void sendPrescriptionEmail(String subject,String message,String patientsEmail)
+	{
+		sendEmail(subject,message,patientsEmail);
+	}
 		
 
 }

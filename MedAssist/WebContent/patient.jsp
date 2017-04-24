@@ -64,8 +64,8 @@
 				<li class="active"><a href="Home.jsp">Home</a></li>
 				
 				<li><a href="Symptoms.jsp">Submit a case</a></li>
-				<li><a href="PatHistory.jsp">Patient History</a></li>
-				<li><a href="#">Schedule an appointment</a></li>
+				<li><a href="PatHistory.jsp"> History</a></li>
+				
 				
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Account<b class="caret"></b></a>

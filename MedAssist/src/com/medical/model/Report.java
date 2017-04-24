@@ -5,6 +5,13 @@ import java.sql.Date;
 public class Report {
 	
 	int case_id;
+	boolean flag;
+	public boolean isFlag() {
+		return flag;
+	}
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
 	String email,disease, symptoms, medicines;
 	
 	Date date;

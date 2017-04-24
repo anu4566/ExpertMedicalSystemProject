@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.medical.dao.MedicalDao;
 import com.medical.model.AptDetails;
+import com.medical.model.Doctors;
 
 import java.util.Properties;  
 import javax.mail.AuthenticationFailedException;
@@ -63,16 +64,24 @@ public class DoctorAppointment extends HttpServlet {
 		String addProblems = request.getParameter("add");
 		String digits = request.getParameter("digits");
 		String days = request.getParameter("days");
+		String dateTime = request.getParameter("datetime");
+		System.out.println("DOC APp:"+ dateTime);
 		String patientEmail = (String) session.getAttribute("email");
 		AptDetails apt = new AptDetails();
+		Doctors doc = new Doctors();
 		apt.setDocEmail(docEmail);
 		apt.setPatientEmail(patientEmail);
 		apt.setMedInfo(medInfo);
 		apt.setProblem(problem);
 		apt.setAddProblems(addProblems);
 		apt.setDays(digits+" "+days );
-		dao.addAptDetails(apt);
-		//dao.sendEmail();
+		apt.setDateTime(dateTime);
+		doc = dao.addAptDetails(apt);
+		System.out.println("**************DOC"+doc.getFirstName());
+		String subject ="Appointment Details";
+		String message ="Your Appointment has been fixed with Dr."+doc.getFirstName()+" "+doc.getLastName()+"  on "+dateTime+ " at "+doc.getAddress();
+		dao.sendEmail(subject,message,patientEmail);
+		request.getRequestDispatcher("/PresDone.jsp").forward(request, response);  
 		 
 		
 	}

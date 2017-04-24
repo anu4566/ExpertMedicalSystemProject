@@ -62,7 +62,9 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 				
-				<li><a href="history">Patient History</a></li>
+				<li><a href="Symptoms.jsp">Submit a case</a></li>
+				<li><a href="PatHistory.jsp"> History</a></li>
+				
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Account<b class="caret"></b></a>
 				  <ul class="dropdown-menu">
@@ -82,8 +84,7 @@
 <div class="pre-box" id="printableArea">
 <img style="margin-left: auto;margin-right: auto;" src="img/logo.png" alt="" width="150" height="40" /><br><br>
 
-<div class="h4" style="padding-left: 30px;padding-right: 30px;">	
-<  
+<div class="h4" style="padding-left: 30px;padding-right: 30px;">	  
 Date :<%=request.getAttribute("date") %><br>
 Patient Name :<%=session.getAttribute("fname") %><br>
 <hr style="height:1px;border:none;color:#333;background-color:#333;" />

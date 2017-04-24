@@ -1,9 +1,17 @@
 package com.medical.model;
 
 public class AptDetails {
-	String  docEmail, medInfo , problem , addProblems, days , patientEmail;
+	String  docEmail, medInfo , problem , addProblems, days , patientEmail,dateTime;
 
 
+
+	public String getDateTime() {
+		return dateTime;
+	}
+
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
+	}
 
 	public String getDocEmail() {
 		return docEmail;

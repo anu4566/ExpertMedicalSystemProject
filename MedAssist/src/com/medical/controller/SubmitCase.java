@@ -57,7 +57,8 @@ public class SubmitCase extends HttpServlet {
 		// TODO Auto-generated method stub
 		 String line = null;
 		 HttpSession session=request.getSession();
-		 
+		 Random rand = new Random();
+		   int  n = rand.nextInt(10000) + 1;
 		 java.util.Date cDate = new java.util.Date();
 		 java.sql.Date currentDate = new java.sql.Date(cDate.getTime());
 		 String email = (String) session.getAttribute("email");
@@ -74,6 +75,7 @@ public class SubmitCase extends HttpServlet {
 					 List<String> list = new ArrayList<String>();
 					 while((line = br.readLine()) != null){
 						 line.trim();
+						 System.out.println("line: "+line);
 					     list.add(line);
 					 }
 					
@@ -105,49 +107,51 @@ public class SubmitCase extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	//	String disease =  request.getParameter("AbdominalPain");
+		//String disease =  request.getParameter("AbdominalPain");
 	//	System.out.println("disease"+disease);
 		String[] val = request.getParameterValues("AbdominalPain");
 		ArrayList<String> aList = new ArrayList<String>();
 		
 		for(String s: val)
 		{
-		System.out.println(s);
+		System.out.println("from input:"+s);
 		s.trim();
 		aList.add(s);
-		Collections.sort(aList);
-		System.out.println(aList);
-		}
+		//Collections.sort(aList);
 		
+		}
+		System.out.println(" list from web:"+aList);
 		
 		for (Map.Entry< ArrayList<String>,String> entry : hmAL.entrySet())
 		{
 		   String sListName = entry.getValue();
-		   //System.out.println("slistname"+sListName);
+		  System.out.println("slistname"+sListName);
 		   ArrayList<String> saAccused = entry.getKey();
 		   
-		   Collections.sort(saAccused);
-		   //System.out.println(saAccused);
+		   
+		   System.out.println(" List from file:"+saAccused);
 		   
 		   if (saAccused.containsAll(aList))
 		   {
-			   Random rand = new Random();
-			   int  n = rand.nextInt(10000) + 1;
-			   report.setEmail(email);
-			   report.setDate(currentDate);
-			   report.setDisease("AbdominalPain");
-			   for(String s: aList)
-			   {
-			   report.setSymptoms(listString.append(s+",").toString());
-			   }
-			   
-			   report.setCase_id(n);
-			   report.setMedicines(sListName);
-			   dao.enterCase(report);
+			     
+			   report.setFlag(true); 
 			   request.setAttribute("Meds",sListName);
 			   request.setAttribute("date",currentDate);
-			   request.getRequestDispatcher("/Prescription.jsp").forward(request, response);  
+			   
+		   
+		   report.setEmail(email);
+		   report.setDate(currentDate);
+		   report.setDisease("AbdominalPain");
+		   for(String s: aList)
+		   {
+		   report.setSymptoms(listString.append(s+",").toString());
 		   }
+		   report.setCase_id(n);
+		   report.setMedicines(sListName);
+		   dao.enterCase(report);
+		   request.getRequestDispatcher("/Prescription.jsp").forward(request, response);  
+		   }
+		
 		   
 		}
 		 
