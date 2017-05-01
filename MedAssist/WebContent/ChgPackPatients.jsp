@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Patient Medical History</title>
+    <title>Change Package</title>
 
     <!-- css -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -68,6 +68,7 @@
 
 				<li><a href="Symptoms.jsp">Submit a case</a></li>
 				<li><a href="PatHistory.jsp"> History</a></li>
+				
 
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Account<b class="caret"></b></a>
@@ -81,19 +82,8 @@
     </nav>
 
 <div class="intro-content1" >
-	<h2 style="margin-left: auto;margin-right: auto;">Patient Medical History</h2><br>
-<table class="table table-bordered table-striped table-hover" style="margin-left: 50px;">
-  <tbody>
-    <tr>
-      <th class="text-center">Case id</th>
-      <th class="text-center">Date</th>
-      <th class="text-center">Name</th>
-  	  <th class="text-center">Disease</th>
-  	  <th class="text-center">Symptoms</th>
-  	  <th class="text-center">Medicines Prescribed</th>
-  	  <th class="text-center">Appointment</th>
-    </tr>
-
+	<h2 style="margin-left: auto;margin-right: auto;">Change Package</h2><br>
+<form method="post" action="buypack">
 <%
 Connection conn = null;
 try
@@ -105,35 +95,44 @@ String password="";
 conn=DriverManager.getConnection(url, username, password);
 String email = (String) session.getAttribute("email");
 System.out.println(email);
-String query1="select case_id,disease,medicines,symptom,date from reports where email=?";
+String query1="select pcktype from patients where email=?";
 PreparedStatement ps = conn.prepareStatement(query1);
 ps.setString(1,email);
 ResultSet rs = ps.executeQuery();
+String pack1,pack2;
 
 while(rs.next())
 {
 	System.out.println("Inside while");
+	String packtype= rs.getString("pcktype");
+	if(packtype.equalsIgnoreCase("Standard"))
+	{
+		 pack1 ="Elite";
+		 pack2 ="Premium";
+	}
+	else if(packtype.equalsIgnoreCase("Elite"))
+	{
+		 pack1 ="Standard";
+		 pack2 ="Premium";
+	}
+	else
+	{
+		 pack1 ="Standard";
+		 pack2 ="Elite";
+	}
 %>
-
-    <tr>
-      <td class="text-center"><%=rs.getInt("case_id") %></td>
-      <td class="text-center">03/24/2017</td>
-      <td class="text-center"><%=session.getAttribute("fname") %>  <%=session.getAttribute("lname") %></td>
-      <td class="text-center"><%=rs.getString("disease") %></td>
-       <td class="text-center"><%=rs.getString("symptom") %></td>
-        <td class="text-center"><%=rs.getString("medicines") %></td>
-        <%String disease = rs.getString("disease");
-        session.setAttribute("dis",disease);
-        %>
-      <td><button class="btn-skin" onclick ="goTo()" value="<%=disease %>" name="sAppoint"  style="height: 50px;width: 250px; font-size: 15px;">Schedule an Appointment</button></td>
-    </tr>
-	</tbody>
-
+	<select name="package" placeholder="Select the package type">
+  		<option value="<%=pack1%>"><%=pack1%></option>
+  	    <option value="<%=pack2%>"><%=pack2%></option>
+   </select>
+   <input type ="hidden" name="user" value="<%=session.getAttribute("hiddenVal") %>" />
+   <input type ="submit" name="submit" value="Change It" class="btn-skin" style="height: 50px;width: 250px; font-size: 15px;"/>
+   
 <%
 }
 %>
 
-</table>
+
 <%
 rs.close();
 ps.close();
@@ -144,6 +143,7 @@ catch(Exception e)
 e.printStackTrace();
 }
 %>
+</form>
 </div>
 
 	<footer>

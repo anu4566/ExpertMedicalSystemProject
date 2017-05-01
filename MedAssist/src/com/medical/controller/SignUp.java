@@ -56,6 +56,11 @@ public class SignUp extends HttpServlet {
 		String fName = request.getParameter("fname");
 		String lName = request.getParameter("lname");
 		String mob = request.getParameter("mob");
+		String pack = request.getParameter("package");
+		String card = request.getParameter("CardType");
+		String cNumber = request.getParameter("cardNum");
+		String cvv = request.getParameter("cvv");
+		String expDate = request.getParameter("expdate");
 		
 		if(session.getAttribute("uname") == null)
 		{	
@@ -68,6 +73,11 @@ public class SignUp extends HttpServlet {
 			patients.setFirstName(fName);
 			patients.setLastName(lName);
 			patients.setContact(mob);
+			patients.setPck(pack);
+			patients.setCardtype(card);
+			patients.setCardNum(cNumber);
+			patients.setCvvnum(cvv);
+			patients.setExpDate(expDate);
 			session.setAttribute("uname",email);  
 			session.setAttribute("jspVal","patient.jsp");
 			
@@ -98,6 +108,11 @@ public class SignUp extends HttpServlet {
 			doctor.setFirstName(fName);
 			doctor.setLastName(lName);
 			doctor.setContact(mob);
+			doctor.setPck(pack);
+			doctor.setCardtype(card);
+			doctor.setCardNum(cNumber);
+			doctor.setCvvnum(cvv);
+			doctor.setExpDate(expDate);
 			session.setAttribute("uname",email);
 			session.setAttribute("jspVal","doctor.jsp");
 			if(dao.isDoctorSignUpValid(doctor))
@@ -127,6 +142,12 @@ public class SignUp extends HttpServlet {
 			research.setFirstName(fName);
 			research.setLastName(lName);
 			research.setContact(mob);
+			research.setPck(pack);
+			research.setCardtype(card);
+			research.setCardNum(cNumber);
+			research.setCvvnum(cvv);
+			research.setExpDate(expDate);
+			
 			session.setAttribute("uname",email);  
 			session.setAttribute("jspVal","researcher.jsp");
 			if(dao.isResearcherSignUpValid(research))

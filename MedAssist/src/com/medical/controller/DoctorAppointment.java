@@ -79,7 +79,8 @@ public class DoctorAppointment extends HttpServlet {
 		doc = dao.addAptDetails(apt);
 		System.out.println("**************DOC"+doc.getFirstName());
 		String subject ="Appointment Details";
-		String message ="Your Appointment has been fixed with Dr."+doc.getFirstName()+" "+doc.getLastName()+"  on "+dateTime+ " at "+doc.getAddress();
+		String message ="Your Appointment has been fixed with Dr."+doc.getFirstName()+" "+doc.getLastName()+"  on "+dateTime+ " at "+doc.getAddress()+"\n\n\n\n\n\n\n Please share your feedback with us by replying back to the email \n\n"
+				+ "Rate us based on scale 1-5, 1 being Poor and 5 being excellent.";
 		dao.sendEmail(subject,message,patientEmail);
 		request.getRequestDispatcher("/PresDone.jsp").forward(request, response);  
 		 

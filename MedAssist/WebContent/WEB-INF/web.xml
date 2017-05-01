@@ -60,4 +60,12 @@
     <servlet-name>prescribeMed</servlet-name>
     <url-pattern>/prescribeMed</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>buypack</servlet-name>
+    <servlet-class>com.medical.controller.BuyPackage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>buypack</servlet-name>
+    <url-pattern>/buypack</url-pattern>
+  </servlet-mapping>
 </web-app>

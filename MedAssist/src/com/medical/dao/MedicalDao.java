@@ -155,11 +155,18 @@ public class MedicalDao extends Dao implements DaoI {
 			{
 				result= true;
 				st = conn.prepareStatement(Queries.PatSignUpCheck);
-				st.setString(4, patients.geteMail());
+				
 				st.setString(1, patients.getPassword());
 				st.setString(2, patients.getFirstName());
 				st.setString(3, patients.getLastName());
+				st.setString(4, patients.geteMail());
 				st.setString(5, patients.getContact());
+				st.setString(6, patients.getPck());
+				st.setString(7, patients.getCardtype());
+				st.setString(8, patients.getCardNum());
+				st.setString(9, patients.getCvvnum());
+				st.setString(10, patients.getExpDate());
+				
 				st.execute();
 				conn.close();
 			}
@@ -197,11 +204,17 @@ public class MedicalDao extends Dao implements DaoI {
 			{
 				result = true;
 				st = conn.prepareStatement(Queries.DocSignUpCheck);
-				st.setString(4, doctor.geteMail());
+				
 				st.setString(1, doctor.getPassword());
 				st.setString(2, doctor.getFirstName());
 				st.setString(3, doctor.getLastName());
+				st.setString(4, doctor.geteMail());
 				st.setString(5, doctor.getContact());
+				st.setString(6, doctor.getPck());
+				st.setString(7, doctor.getCardtype());
+				st.setString(8, doctor.getCardNum());
+				st.setString(9, doctor.getCvvnum());
+				st.setString(10, doctor.getExpDate());
 				st.execute();
 				conn.close();
 			}
@@ -247,6 +260,11 @@ public class MedicalDao extends Dao implements DaoI {
 				st.setString(2, research.getFirstName());
 				st.setString(3, research.getLastName());
 				st.setString(5, research.getContact());
+				st.setString(6, research.getPck());
+				st.setString(7, research.getCardtype());
+				st.setString(8, research.getCardNum());
+				st.setString(9, research.getCvvnum());
+				st.setString(10, research.getExpDate());
 				st.execute();
 				conn.close();
 			}
@@ -481,6 +499,46 @@ public Doctors addAptDetails(AptDetails apt) {
 	public void sendPrescriptionEmail(String subject,String message,String patientsEmail)
 	{
 		sendEmail(subject,message,patientsEmail);
+	}
+	
+	public void updatePackage(String user,String pack,String email)
+	{
+		try {
+			System.out.println("inside try");
+			
+			conn = getConnection();
+			if(user.equalsIgnoreCase("Pat"))
+			{
+			st = conn.prepareStatement(Queries.updatePatientPack);
+			st.setString(1,pack);
+			st.setString(2, email);
+			st.execute();
+			}
+			if(user.equalsIgnoreCase("Doc"))
+			{
+			st = conn.prepareStatement(Queries.updateDoctorPack);
+			st.setString(1,pack);
+			st.setString(2, email);
+			st.execute();
+			}
+			if(user.equalsIgnoreCase("Res"))
+			{
+			st = conn.prepareStatement(Queries.updateResearcherPack);
+			st.setString(1,pack);
+			st.setString(2, email);
+			st.execute();
+			}
+			conn.close();
+		}
+		catch (Exception e)
+		{
+			System.err.println("Got an exception!");
+			System.err.println(e.getMessage());
+		}
+		
+		finally {
+			finallyMethod();
+		}
 	}
 		
 

@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Patient Medical History</title>
+    <title>UnResolved Cases</title>
 
     <!-- css -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -66,13 +66,14 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 
-				<li><a href="Symptoms.jsp">Submit a case</a></li>
-				<li><a href="PatHistory.jsp"> History</a></li>
+				<li><a href="#">Appointments</a></li>
+				<li><a href="#">Solve a case</a></li>
 
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Account<b class="caret"></b></a>
 				  <ul class="dropdown-menu">
-				    <li><a href="ChgPackPatients.jsp">Change Package</a></li>
+				    <li><a href="#">Change Package</a></li>
+					<li><a href="#">Account Settings</a></li>
 					<li><a href="logout">Sign out</a></li>
 				  </ul>
 				</li>
@@ -82,16 +83,17 @@
 
 <div class="intro-content1" >
 	<h2 style="margin-left: auto;margin-right: auto;">Patient Medical History</h2><br>
+	<form method="post" style ="top:45%;left:20%;position:absolute;" action="prescribeMed">
 <table class="table table-bordered table-striped table-hover" style="margin-left: 50px;">
   <tbody>
     <tr>
       <th class="text-center">Case id</th>
       <th class="text-center">Date</th>
-      <th class="text-center">Name</th>
+      <th class="text-center">Patients Email</th>
   	  <th class="text-center">Disease</th>
   	  <th class="text-center">Symptoms</th>
-  	  <th class="text-center">Medicines Prescribed</th>
-  	  <th class="text-center">Appointment</th>
+  	  <th class="text-center">Prescribe medicine</th>
+  	  <th class="text-center">Prescribe</th>
     </tr>
 
 <%
@@ -103,38 +105,32 @@ String url="jdbc:postgresql://localhost/medicalsys";
 String username="anushabalu";
 String password="";
 conn=DriverManager.getConnection(url, username, password);
-String email = (String) session.getAttribute("email");
-System.out.println(email);
-String query1="select case_id,disease,medicines,symptom,date from reports where email=?";
+String query1="select case_id,date,email,disease,symptom from reports where flag=?";
 PreparedStatement ps = conn.prepareStatement(query1);
-ps.setString(1,email);
+ps.setBoolean(1,false);
 ResultSet rs = ps.executeQuery();
 
 while(rs.next())
 {
 	System.out.println("Inside while");
+	 String patEmail = rs.getString("email");
 %>
 
-    <tr>
-      <td class="text-center"><%=rs.getInt("case_id") %></td>
-      <td class="text-center">03/24/2017</td>
-      <td class="text-center"><%=session.getAttribute("fname") %>  <%=session.getAttribute("lname") %></td>
-      <td class="text-center"><%=rs.getString("disease") %></td>
-       <td class="text-center"><%=rs.getString("symptom") %></td>
-        <td class="text-center"><%=rs.getString("medicines") %></td>
-        <%String disease = rs.getString("disease");
-        session.setAttribute("dis",disease);
-        %>
-      <td><button class="btn-skin" onclick ="goTo()" value="<%=disease %>" name="sAppoint"  style="height: 50px;width: 250px; font-size: 15px;">Schedule an Appointment</button></td>
+   <tr> 
+   	  <td class="text-center"><%=rs.getInt("case_id") %></td>
+      <td class="text-center"><%=rs.getDate("date") %></td>
+      <td class="text-center" ><%=patEmail%></td>
+      <td class="text-center"><%= rs.getString("disease") %></td>
+      <td class="text-center"><%=rs.getString("symptom") %></td>
+      <td class="text-center"><textarea name="txtarea" rows="4" cols="50"></textarea></td>
+        
+      <td><button type="submit" name="Prescribe" class="btn-skin"  value=<%=patEmail%> style="height: 50px;width: 250px; font-size: 15px;">Prescribe</button></td>
     </tr>
-	</tbody>
+	
+
 
 <%
 }
-%>
-
-</table>
-<%
 rs.close();
 ps.close();
 conn.close();
@@ -144,6 +140,9 @@ catch(Exception e)
 e.printStackTrace();
 }
 %>
+	</tbody>
+</table>
+</form>
 </div>
 
 	<footer>

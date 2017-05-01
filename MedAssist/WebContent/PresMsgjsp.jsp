@@ -62,12 +62,15 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 				
-				<li><a href="history">Patient History</a></li>
+					<li class="active"><a href="Home.jsp">Home</a></li>
+				
+				<li><a href="viewappointment.jsp">Appointments</a></li>
+				<li><a href="SolveACase.jsp">Solve a case</a></li>
+				
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Account<b class="caret"></b></a>
 				  <ul class="dropdown-menu">
-				    <li><a href="#">Change Package</a></li>
-					<li><a href="#">Account Settings</a></li>
+				    <li><a href="ChgPackPatients.jsp">Change Package</a></li>
 					<li><a href="logout">Sign out</a></li>
 				  </ul>
 				</li>

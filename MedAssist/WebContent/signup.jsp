@@ -191,6 +191,58 @@
                                                         <div class="validation"></div>
     												</div>
     											</div>
+    											</div>
+    											
+    										<div class="row">
+    											 <div class="col-xs-12 col-sm-12 col-md-12"> 
+    												<div class="form-group">
+    													
+    													<select name="package" placeholder="Select the package type">
+  																	<option value="Standard">Standard - $99.99</option>
+  																	<option value="Elite">Elite - $499.99</option>
+  																	<option value="Premium">Premium - $249.99</option>
+														</select>
+                                                        <div class="validation"></div>
+    												</div>
+    											</div>
+    											 <div class="col-xs-12 col-sm-12 col-md-12"> 
+    												<div class="form-group">
+    													
+    													<select name="CardType" placeholder="Select the Card Type">
+  																	<option value="CC">Credit Card</option>
+  																	<option value="ATM">ATM Card</option>
+														</select>
+                                                        <div class="validation"></div>
+    												</div>
+    											</div>
+    											</div>
+    											<div class="row">
+    											 <div class="col-xs-12 col-sm-12 col-md-12"> 
+    												<div class="form-group">
+    													
+    													<input type="text" name="cardNum" pattern="[0-9]+" required class="form-control input-md" data-rule="minlen:16" data-msg="Please enter 16 digit card number" placeholder="Enter your 16 digit Card Number: "/>
+                                                        <div class="validation"></div>
+    												</div>
+    											</div>
+    											 <div class="col-xs-12 col-sm-12 col-md-12"> 
+    												<div class="form-group">
+    													
+    													<input type="text" name="cvv" pattern="[0-9]+" required class="form-control input-md" data-rule="minlen:3" data-msg="Please enter 3 or 4 digit cvv number" placeholder="Enter your CVV number: "/>
+                                                        <div class="validation"></div>
+    												</div>
+    											</div>
+    											</div>
+    											<div class="row">
+    											 <div class="col-xs-12 col-sm-12 col-md-12"> 
+    												<div class="form-group">
+    													
+    													<input type="text" name="expdate"  required class="form-control input-md"  data-msg="Please enter your expiry date in MM/YYYY format" placeholder="Enter your expiry date in MM/YYYY format "/>
+                                                        <div class="validation"></div>
+    												</div>
+    											</div>
+    			
+    											</div>
+    											
     											
 											<!--   <button type="submit" formtarget="patient.jsp">Submit to a new window</button> -->
     										<input type="submit" value="Submit"  class="btn btn-skin btn-block btn-lg">

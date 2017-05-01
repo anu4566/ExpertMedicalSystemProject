@@ -6,25 +6,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.medical.dao.MedicalDao;
 
 /**
- * Servlet implementation class SendPrescriptionEmail
+ * Servlet implementation class BuyPackage
  */
-@WebServlet("/SendPrescriptionEmail")
-public class SendPrescriptionEmail extends HttpServlet {
+@WebServlet("/BuyPackage")
+public class BuyPackage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MedicalDao dao;
-
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SendPrescriptionEmail() {
+    public BuyPackage() {
         super();
         dao = new MedicalDao();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
@@ -40,25 +40,15 @@ public class SendPrescriptionEmail extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String [] message = request.getParameterValues("txtarea");
-		String finalMessage = null;
-		for(int i = 0; i< message.length;i++)
-		{
-			System.out.println("SERVELT******"+message[i]);	
-			if(message[i] == null || message[i] =="")
-			{
-				System.out.println("Message is empty moving to next value");
-			}
-			else
-			{
-				finalMessage = message[i];
-			}
-		}
+		String packVal = request.getParameter("package");
+		HttpSession session=request.getSession();
+		String userId = (String) session.getAttribute("uname");
+		//System.out.println(userId);
+		String actor = request.getParameter("user");
+		System.out.println(actor);
+		dao.updatePackage(actor, packVal, userId);
+		request.getRequestDispatcher("/PackageChanged.jsp").forward(request, response);  
 		
-		String patEmail = request.getParameter("Prescribe");
-		String subject ="Medicine Prescription from doctor";
-		dao.sendPrescriptionEmail(subject,finalMessage,patEmail);
-		request.getRequestDispatcher("/PresMsgjsp.jsp").forward(request, response);  
 	}
 
 }
