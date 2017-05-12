@@ -63,6 +63,7 @@ public class SubmitCase extends HttpServlet {
 		 java.sql.Date currentDate = new java.sql.Date(cDate.getTime());
 		 String email = (String) session.getAttribute("email");
 		 Report report = new Report();
+		 boolean flag= false;
 		 StringBuilder listString = new StringBuilder();
 		 String path = this.getServletContext().getRealPath("/CasesValues"); 
 			HashMap<ArrayList<String>, String> hmAL = new HashMap<>();
@@ -107,7 +108,7 @@ public class SubmitCase extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		String disease =  request.getParameter("aPain");
+		String disease =  request.getParameter("disease");
 		System.out.println("disease"+disease);
 		String[] val = request.getParameterValues(disease);
 		ArrayList<String> aList = new ArrayList<String>();
@@ -134,6 +135,7 @@ public class SubmitCase extends HttpServlet {
 		   if (saAccused.containsAll(aList))
 		   {
 			     
+			   System.out.println("test check:"+saAccused.containsAll(aList));
 			   report.setFlag(true); 
 			   request.setAttribute("Meds",sListName);
 			   request.setAttribute("date",currentDate);
@@ -141,7 +143,7 @@ public class SubmitCase extends HttpServlet {
 		   
 		   report.setEmail(email);
 		   report.setDate(currentDate);
-		   report.setDisease("AbdominalPain");
+		   report.setDisease(disease);
 		   for(String s: aList)
 		   {
 		   report.setSymptoms(listString.append(s+",").toString());
@@ -151,8 +153,28 @@ public class SubmitCase extends HttpServlet {
 		   dao.enterCase(report);
 		   request.getRequestDispatcher("/Prescription.jsp").forward(request, response);  
 		   }
+		   
 		
 		   
+		}
+		if(flag== false)
+		{
+			
+				   report.setFlag(false);
+				   report.setEmail(email);
+				   report.setDate(currentDate);
+				   report.setDisease(disease);
+				   for(String s: aList)
+				   {
+				   report.setSymptoms(listString.append(s+",").toString());
+				   }
+				   report.setCase_id(n);
+				   report.setMedicines("No Meds Prescribed");
+				   dao.enterCase(report);
+				   request.setAttribute("Meds","We apologize that we cannot suggest a medicine for your issue, Your issue will be posted to our reputed doctors and we will email the prescription shortly");
+				   request.setAttribute("date",currentDate);
+				   request.getRequestDispatcher("/NoPres.jsp").forward(request, response);  
+			  
 		}
 		 
 	}

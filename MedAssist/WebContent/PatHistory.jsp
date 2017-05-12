@@ -66,13 +66,13 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 
-				<li><a href="Symptoms.jsp">Submit a case</a></li>
-				<li><a href="PatHistory.jsp"> History</a></li>
+				<li><a href="PatHistory.jsp">Patient History</a></li>
+				<li><a href="Symptoms.jsp">Submit A Case</a></li>
 
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Account<b class="caret"></b></a>
 				  <ul class="dropdown-menu">
-				    <li><a href="ChgPackPatients.jsp">Change Package</a></li>
+				    <li><a href="#">Change Package</a></li>
 					<li><a href="logout">Sign out</a></li>
 				  </ul>
 				</li>
@@ -81,8 +81,8 @@
     </nav>
 
 <div class="intro-content1" >
-	<h2 style="margin-left: auto;margin-right: auto;">Patient Medical History</h2><br>
-<table class="table table-bordered table-striped table-hover" style="margin-left: 50px;">
+	<h2 style="margin-left: auto;margin-right: auto;color: #3fbbc0;">Patient Medical History</h2><br>
+<table class="table table-bordered table-striped table-hover">
   <tbody>
     <tr>
       <th class="text-center">Case id</th>

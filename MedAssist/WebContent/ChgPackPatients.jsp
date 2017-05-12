@@ -82,7 +82,15 @@
     </nav>
 
 <div class="intro-content1" >
-	<h2 style="margin-left: auto;margin-right: auto;">Change Package</h2><br>
+	
+	<h1	 style="margin-left: auto;margin-right: auto;color: #3fbbc0;"><strong>Change Package</strong></h1>
+	<p style="font-size:20px;letter-spacing: 1px;word-spacing: 2px;margin-left: 20%;margin-right: 20%;">Upgrade or Downgrade plan is Easy!!!
+
+You can change your MedAssist plan at any time throughout your membership.
+
+To change your Plan, Select the Package which you want from dropdown and Click on Change it.</p>
+	
+	<div class="container styled-select black rounded" style="margin-left: 35%;color: #3fbbc0;">
 <form method="post" action="buypack">
 <%
 Connection conn = null;
@@ -125,9 +133,10 @@ while(rs.next())
   		<option value="<%=pack1%>"><%=pack1%></option>
   	    <option value="<%=pack2%>"><%=pack2%></option>
    </select>
-   <input type ="hidden" name="user" value="<%=session.getAttribute("hiddenVal") %>" />
-   <input type ="submit" name="submit" value="Change It" class="btn-skin" style="height: 50px;width: 250px; font-size: 15px;"/>
    
+   <input type ="hidden" name="user"  value="<%=session.getAttribute("hiddenVal") %>" />
+   <input type ="submit" name="submit" value="Change It" class="btn-skin" style="height: 50px;width: 150px; font-size: 15px;"/>
+	
 <%
 }
 %>
@@ -144,6 +153,7 @@ e.printStackTrace();
 }
 %>
 </form>
+</div>
 </div>
 
 	<footer>

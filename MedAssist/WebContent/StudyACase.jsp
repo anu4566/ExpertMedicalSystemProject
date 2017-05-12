@@ -80,8 +80,8 @@
     </nav>
 
 <div class="intro-content1" >
-	<h2 style="margin-left: auto;margin-right: auto;">Patient Medical History</h2><br>
-<table class="table table-bordered table-striped table-hover" style="margin-left: 50px;">
+	<h2 style="margin-left: auto;margin-right: auto;color: #3fbbc0;">Patient Medical History</h2><br>
+<table class="table table-bordered table-striped table-hover">
   <tbody>
     <tr> 
   	  <th class="text-center">Disease</th>

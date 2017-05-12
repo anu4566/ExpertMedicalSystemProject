@@ -67,13 +67,9 @@
 				<li><a href="#healthnews">Health News</a></li>
 				<li><a href="#pricing">Pricing</a></li>
 				
-				<li class="dropdown">
-				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>How it Works <b class="caret"></b></a>
-				  <ul class="dropdown-menu">
-				    <li><a href="#">For Patient</a></li>
-					<li><a href="#">For Doctor</a></li>
-					<li><a href="#">For Researcher</a></li>
-				  </ul>
+				<li>
+				  <a href="howitworks.jsp" >How it Works </b></a>
+				  
 				</li>
 				
 				
@@ -86,15 +82,9 @@
 				  </ul>
 				</li>
 				
-				<li class="dropdown">
-				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>About US <b class="caret"></b></a>
-				  <ul class="dropdown-menu">
-				    <li><a href="#">Our Inspiration</a></li>
-					<li><a href="#">Our Mission</a></li>
-					<li><a href="#">Our Team</a></li>
+				
+				 <li> <a href="aboutus.jsp">About US</a></li>
 				  
-				  </ul>
-				</li>
 				
 	
         </div>

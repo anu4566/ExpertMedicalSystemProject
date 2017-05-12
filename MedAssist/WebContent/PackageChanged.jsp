@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Package Change</title>
+    <title>Package Changed</title>
 	
     <!-- css -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -80,15 +80,14 @@
     <div>
  
 <!-- -------------------------------------------------------------------------------------------------- -->
-<div class="pre-box" id="printableArea">
-<img style="margin-left: auto;margin-right: auto;" src="img/logo.png" alt="" width="150" height="40" /><br><br>
-<div>
-</br>
-<div class="h4" style="margin-left: auto;margin-right: auto;">	
 
-<strong>Your package is successfully!</strong>
+<div class="intro-content1" >
+	<div style="margin-left: 45%;">
+ 		<img src="img/logo.png" alt="" width="150" height="40" /><br><br>
+ 	</div>
+	<h1	 style="margin-left: auto;margin-right: auto;color: #3fbbc0;"><strong>Your Package has been changed successfully!!! </strong></h1>
 </div>
-
+<!-- -------------------------------------------------------------------------------------------------- -->
 
 	<footer>
 	

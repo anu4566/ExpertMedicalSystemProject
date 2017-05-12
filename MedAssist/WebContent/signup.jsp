@@ -138,112 +138,47 @@
     <div class="panel panel-skin">
 							
 									<div class="panel-body">
-									    <div id="sendmessage">Your message has been sent. Thank you!</div>
-                                        <div id="errormessage"></div>
-    										<div class="row">
+
+    										<div class="row">    
+    											
     											 <div class="col-xs-12 col-sm-12 col-md-12"> 
     												<div class="form-group">
     													
     													<input type="text" name="fname" pattern="[A-Za-z]+" required id="fname" class="form-control input-md" data-rule="minlen:3" data-msg="Please enter at least 3 chars" placeholder="Enter your First Name: ">
-                                                        <div class="validation"></div>
-    												</div>
-    											</div>
-												
-    											   <div class="col-xs-12 col-sm-12 col-md-12">
-    												<div class="form-group">
-    												
+                                                      
+    													
     													<input type="text" name="lname" pattern="[A-Za-z]+" required id="lname" class="form-control input-md" data-rule="minlen:3" data-msg="Please enter at least 3 chars" placeholder="Enter your Last name">
     													
-                                                        <div class="validation"></div>
-    												</div>
-    											</div>
-    										</div>
-
-
-    										<div class="row">
-    											 <div class="col-xs-12 col-sm-12 col-md-12"> 
-    												<div class="form-group">
     													
-    													<input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required id="email" class="form-control input-md" data-rule="minlen:3" data-msg="Please enter at least 3 chars" placeholder="Enter your email address: ">
-                                                        <div class="validation"></div>
-    												</div>
-    											</div>
-												
-    											   <div class="col-xs-12 col-sm-12 col-md-12">
-    												<div class="form-group">
-    												
     													<input type="password" name="pwd" pattern=".{6,}" title="Six or more characters" required id="pwd" class="form-control input-md" data-rule="minlen:3" data-msg="Please enter at least 3 chars" placeholder="Enter your password">
     														<%String hidden = session.getAttribute("hiddenVal").toString();%>
     									
     													<input type = "hidden" name="hiddenVal" value = <%=hidden%> >
     													
-                                                        <div class="validation"></div>
-    												</div>
-    											</div>
-    										</div>
-
-
-    										<div class="row">
-    											 <div class="col-xs-12 col-sm-12 col-md-12"> 
-    												<div class="form-group">
     													
-    													<input type="tel" name="mob" id="mob" pattern="[0-9]+" required class="form-control input-md" data-rule="minlen:3" data-msg="Please enter at least 3 chars" placeholder="Enter your Mobile Number: ">
-                                                        <div class="validation"></div>
-    												</div>
-    											</div>
-    											</div>
-    											
-    										<div class="row">
-    											 <div class="col-xs-12 col-sm-12 col-md-12"> 
-    												<div class="form-group">
-    													
+    													<input type="number" name="mob" id="mob" pattern="[0-9]+" required class="form-control input-md"  data-rule="minlen:10"  data-msg="Please enter at least 3 chars" placeholder="Enter your Mobile Number: ">
+                                                        
     													<select name="package" placeholder="Select the package type">
   																	<option value="Standard">Standard - $99.99</option>
   																	<option value="Elite">Elite - $499.99</option>
   																	<option value="Premium">Premium - $249.99</option>
 														</select>
-                                                        <div class="validation"></div>
-    												</div>
-    											</div>
-    											 <div class="col-xs-12 col-sm-12 col-md-12"> 
-    												<div class="form-group">
     													
     													<select name="CardType" placeholder="Select the Card Type">
   																	<option value="CC">Credit Card</option>
   																	<option value="ATM">ATM Card</option>
 														</select>
-                                                        <div class="validation"></div>
-    												</div>
-    											</div>
-    											</div>
-    											<div class="row">
-    											 <div class="col-xs-12 col-sm-12 col-md-12"> 
-    												<div class="form-group">
     													
-    													<input type="text" name="cardNum" pattern="[0-9]+" required class="form-control input-md" data-rule="minlen:16" data-msg="Please enter 16 digit card number" placeholder="Enter your 16 digit Card Number: "/>
+    													<input type="number" name="cardNum" pattern="[0-9]+" required class="form-control input-md" data-rule="minlen:16" data-msg="Please enter 16 digit card number" placeholder="Enter your 16 digit Card Number: "/>
+                                                        <input type="number" name="cvv" pattern="[0-9]+" required class="form-control input-md" data-rule="minlen:3" data-msg="Please enter 3 or 4 digit cvv number" placeholder="Enter your CVV number: "/>
+                                     					<input type="month" name="expdate"  required class="form-control input-md"  data-msg="Please enter your expiry date in MM/YYYY format" placeholder="Enter your expiry date in MM/YYYY format "/>
+                                                        
                                                         <div class="validation"></div>
     												</div>
     											</div>
-    											 <div class="col-xs-12 col-sm-12 col-md-12"> 
-    												<div class="form-group">
-    													
-    													<input type="text" name="cvv" pattern="[0-9]+" required class="form-control input-md" data-rule="minlen:3" data-msg="Please enter 3 or 4 digit cvv number" placeholder="Enter your CVV number: "/>
-                                                        <div class="validation"></div>
-    												</div>
-    											</div>
-    											</div>
-    											<div class="row">
-    											 <div class="col-xs-12 col-sm-12 col-md-12"> 
-    												<div class="form-group">
-    													
-    													<input type="text" name="expdate"  required class="form-control input-md"  data-msg="Please enter your expiry date in MM/YYYY format" placeholder="Enter your expiry date in MM/YYYY format "/>
-                                                        <div class="validation"></div>
-    												</div>
-    											</div>
-    			
-    											</div>
+    										</div>
     											
-    											
+    				
 											<!--   <button type="submit" formtarget="patient.jsp">Submit to a new window</button> -->
     										<input type="submit" value="Submit"  class="btn btn-skin btn-block btn-lg">
     										</form>

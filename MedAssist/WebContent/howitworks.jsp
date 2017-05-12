@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+﻿<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Appointment Info</title>
+    <title>How it works</title>
 	
     <!-- css -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -58,38 +58,58 @@
                 </a>
             </div>
 
-          <!--    Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+          <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
+				<li class="active"><a href="Home.jsp">Home</a></li>
 				
-					<li class="active"><a href="Home.jsp">Home</a></li>
+				<li><a href="#doctor">Doctors</a></li>
+				<li><a href="#healthnews">Health News</a></li>
+				<li><a href="#pricing">Pricing</a></li>
 				
-				<li><a href="viewappointment.jsp">Appointments</a></li>
-				<li><a href="SolveACase.jsp">Solve a case</a></li>
+				<li>
+				  <a href="howitworks.jsp" >How it Works </b></a>
+				  
+				</li>
+				
 				
 				<li class="dropdown">
-				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Account<b class="caret"></b></a>
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Login <b class="caret"></b></a>
 				  <ul class="dropdown-menu">
-				    <li><a href="ChgPackPatients.jsp">Change Package</a></li>
-					<li><a href="logout">Sign out</a></li>
+				    <li><a href="PLogin.jsp">Login as Patient</a></li>
+					<li><a href="DLogin.jsp">Login as Doctor</a></li>
+					<li><a href="RLogin.jsp">Login as Researcher</a></li>
 				  </ul>
 				</li>
 				
 				
-
-        </div>       
+				 <li> <a href="aboutus.jsp">About US</a></li>
+				  
+				
+	
+        </div>
+        <!-- /.container -->
     </nav>
     <div>
  
 <!-- -------------------------------------------------------------------------------------------------- -->
 
 <div class="intro-content1" >
-	<div style="margin-left: 45%;">
- 		<img src="img/logo.png" alt="" width="150" height="40" /><br><br>
- 	</div>
- 	<div>
-	<h2	 style="margin-left: 10%;margin-right: 10%;color: #3fbbc0;"><strong>Prescription has been sent to the patient.Please go back for checking details on appointment.</strong></h2>
+	
+	<h1	 style="margin-left: auto;margin-right: auto;color: #3fbbc0;"><strong>How it Works</strong></h1>
+	
+
+	<div style="margin-right: -20%;margin-top: 5%;">
+	<video width="50%" controls autoplay>
+
+  	<source
+    src="http://webpage.pace.edu/pn36097n/twomodules%20-%20YouTube.MP4"
+    type="video/mp4">
+
+ 	 Your browser doesn't support HTML5 video tag.
+	</video>
 	</div>
+
+
 
 </div>
 <!-- -------------------------------------------------------------------------------------------------- -->
@@ -212,16 +232,6 @@
 	<script src="js/nivo-lightbox.min.js"></script>
     <script src="js/custom.js"></script>
     <script type="text/javascript">
-    function printDiv(divName) {
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
-
-     document.body.innerHTML = printContents;
-
-     window.print();
-
-     document.body.innerHTML = originalContents;
-	}
 </script>
  
 

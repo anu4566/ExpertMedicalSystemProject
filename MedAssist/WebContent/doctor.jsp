@@ -62,14 +62,13 @@
 			  <ul class="nav navbar-nav">
 				<li class="active"><a href="Home.jsp">Home</a></li>
 				
-				<li><a href="viewappointment.jsp">Appointments</a></li>
 				<li><a href="SolveACase.jsp">Solve a case</a></li>
+				<li><a href="viewappointment.jsp">View Appointment</a></li>
 				
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Account<b class="caret"></b></a>
 				  <ul class="dropdown-menu">
-				  
-				  	<li><a href="ChgPackPatients.jsp">Change Package</a></li>  
+				    
 					<li><a href="logout">Sign out</a></li>
 				  </ul>
 				</li>
@@ -81,17 +80,17 @@
 
 
 
-<center>
 <div class="intro-content"> 
-			 	<div class="container"> 
-				<div class="col-md-4 col-md-offset-4">					
-                                <div class="row"> 
-				<div class="col-lg-14">
-				<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
-				<h2 class="h-ultra">Welcome ${fname} ${lname}</h2>
+			 	<h5 style="text-align:center;">Welcome ${fname} ${lname}</h5><br>
 				
-</div></div></div></div></div></div></center>
+				<h3 style="text-align:center;">Pick a case by searching or browsing through hundreds of active cases looking for those that you can uniquely help solve.<br></h3><br>
 
+				<h4 style="text-align:center;">Collaborate with patients and your peers--other Medical Detectives--as you discuss symptoms, medical history and other clues that could help crack the case.</h4><br>
+				
+				<h4 style="text-align:center;">Help Today!!!</h4><br>
+				
+				<center><a href="SolveACase.jsp" class="btn-skin">Solve a Case</a><center>
+</div>
 
 	<footer>
 	

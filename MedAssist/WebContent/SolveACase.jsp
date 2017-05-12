@@ -66,13 +66,13 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 
-				<li><a href="#">Appointments</a></li>
-				<li><a href="#">Solve a case</a></li>
+				<li><a href="viewappointment.jsp">Appointments</a></li>
+				<li><a href="SolveACase.jsp">Solve a case</a></li>
 
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Account<b class="caret"></b></a>
 				  <ul class="dropdown-menu">
-				    <li><a href="ChgPackPatients.jsp">Change Package</a></li>
+				    <li><a href="#">Change Package</a></li>
 					<li><a href="logout">Sign out</a></li>
 				  </ul>
 				</li>
@@ -83,7 +83,7 @@
 
 <div class="intro-content1">
 	<div class="container">
-	<h2>Patient Medical History</h2><br>
+	<h2 style="margin-left: auto;margin-right: auto;color: #3fbbc0;">Patient Medical History</h2><br>
 	<form method="post" action="prescribeMed">
 <table class="table table-bordered table-striped table-hover">
   <tbody>
@@ -114,18 +114,18 @@ ResultSet rs = ps.executeQuery();
 while(rs.next())
 {
 	System.out.println("Inside while");
-	 
+	 String patEmail = rs.getString("email");
 %>
 
    <tr> 
    	  <td class="text-center"><%=rs.getInt("case_id") %></td>
       <td class="text-center"><%=rs.getDate("date") %></td>
-      <td class="text-center" ><%=rs.getString("email")%></td>
+      <td class="text-center" ><%=patEmail%></td>
       <td class="text-center"><%= rs.getString("disease") %></td>
       <td class="text-center"><%=rs.getString("symptom") %></td>
       <td class="text-center"><textarea name="txtarea" rows="4" cols="50"></textarea></td>
         
-      <td><button type="submit" name="Prescribe" class="btn-skin"  value=<%=rs.getString("email")%> style="height: 50px;width: 250px; font-size: 15px;">Prescribe</button></td>
+      <td><button type="submit" name="Prescribe" class="btn-skin"  value=<%=patEmail%> style="height: 50px;width: 250px; font-size: 15px;">Prescribe</button></td>
     </tr>
 	</tbody>
 

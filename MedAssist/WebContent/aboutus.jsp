@@ -3,12 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Welcome Researcher Page</title>
+    <title>About us</title>
 	
     <!-- css -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -20,6 +21,7 @@
     <link href="css/owl.theme.css" rel="stylesheet" media="screen" />
 	<link href="css/animate.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 	<!-- boxed bg -->
 	<link id="bodybg" href="bodybg/bg1.css" rel="stylesheet" type="text/css" />
@@ -28,7 +30,7 @@
 
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom" >
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 
 
 <div id="wrapper">
@@ -62,35 +64,125 @@
 			  <ul class="nav navbar-nav">
 				<li class="active"><a href="Home.jsp">Home</a></li>
 				
-				<li><a href="StudyACase.jsp">Study a case</a></li>
+				<li><a href="#doctor">Doctors</a></li>
+				<li><a href="#healthnews">Health News</a></li>
+				<li><a href="#pricing">Pricing</a></li>
+				
+				<li>
+				  <a href="howitworks.jsp" >How it Works </b></a>
+				  
+				</li>
+				
 				
 				<li class="dropdown">
-				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Account<b class="caret"></b></a>
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Login <b class="caret"></b></a>
 				  <ul class="dropdown-menu">
-				  	<li><a href="ChgPackPatients.jsp">Change Package</a></li>
-				    <li><a href="logout">Sign out</a></li>
+				    <li><a href="PLogin.jsp">Login as Patient</a></li>
+					<li><a href="DLogin.jsp">Login as Doctor</a></li>
+					<li><a href="RLogin.jsp">Login as Researcher</a></li>
 				  </ul>
 				</li>
 				
 				
-
-        </div>       
+				 <li> <a href="aboutus.jsp">About US</a></li>
+				  
+				
+	
+        </div>
+        <!-- /.container -->
     </nav>
 
 
-<div class="intro-content"> 
-			 	<h5 style="text-align:center;">Welcome ${fname} ${lname}</h5><br>
-				
-				<h3 style="text-align:center;">If you have an interest in scientific exploration and a desire to break new ground in medical knowledge, MedAssist provides patients medical cases to research that leads to improving clinical care and developing new knowledge in the biomedical sciences.<br></h3><br>
 
-				
-				<h4 style="text-align:center;">Research Today!!!</h4><br>
-				
-				<center><a href="StudyACase.jsp" class="btn-skin">Study a Case</a><center>
+
+<div class="intro-content" style="height: 40%; width: 100%; background-size: cover;background-position: center;    background-attachment: fixed;"> 
+
+	<h1	style="color: #000;margin-left: 40%;margin-top: 3%;"><strong>OUR MISSION</strong></h1>
 </div>
 
-	<footer>
+<div class="intro-content1">
+	<h4	style="margin-left: 10%;margin-right: 10%;margin-top: -10%;color: #3fbbc0;text-align: center;letter-spacing: 1px;word-spacing: 2px;"><strong>A Revolutionary Approach to Healthcare<br><br>We're harnessing the collective wisdom of a global, online medical community and our own expert system to provide patients with a clear path to their diagnosis and cure</strong></h4>
+</div>
+
+<div class="intro-content" style="height: 10%; width: 100%;background-size: cover;background-position: center;    background-attachment: fixed;"> 
+	<h1	style="color: #000;margin-left: 40%;margin-top: -8%;"><strong>OUR TEAM</strong></h1>
+</div>
+
+<div class="intro-content1">
+
+<div class="w3-container" style="margin-left: 8%;margin-top: -7%;">
+ 
+ 
+  <div class="w3-card-2" style="width:20%;display: inline-block;padding: 5px;margin: 0.5%;">
+    <img src="img/team/gunjan.jpg" alt="Person" style="width:100%">
+    <div class="w3-container">
+      <h4><b>Gunjan Asrani</b></h4>
+      <p>Project Manager</p>
+    </div>
+  </div>
+  
+  <div class="w3-card-2" style="width:20%;display: inline-block;padding: 5px;margin: 0.5%;">
+    <img src="img/team/anu.jpg" alt="Person" style="width:100%">
+    <div class="w3-container">
+      <h4><b>Anusha Balasubramanian</b></h4>
+      <p>Product Owner</p>
+    </div>
+  </div>
+
+  <div class="w3-card-2" style="width:20%;display: inline-block;padding: 5px;margin: 0.5%;">
+    <img src="http://webpage.pace.edu/mc62128n/pic.jpg" alt="Person" style="width:100%">
+    <div class="w3-container">
+      <h4><b>Manish Chaudhari</b></h4>
+      <p>Lead Business Analyst</p>
+    </div>
+  </div>
+  
+  <div class="w3-card-2" style="width:20%;display: inline-block;padding: 5px;margin: 0.5%;">
+    <img src="img/team/parag.jpg" alt="Person" style="width:100%">
+    <div class="w3-container">
+      <h4><b>Parag Bhole</b></h4>
+      <p>Lead Developer</p>
+    </div>
+  </div>
+
+  <div class="w3-card-2" style="width:20%;display: inline-block;padding: 5px;margin: 0.5%;">
+    <img src="img/team/jimmy.JPG" alt="Person" style="width:100%">
+    <div class="w3-container">
+      <h4><b>Jimmy Patel</b></h4>
+      <p>Developer</p>
+    </div>
+  </div>
+  
+  <div class="w3-card-2" style="width:20%;display: inline-block;padding: 5px;margin: 0.5%;">
+    <img src="img/team/Chris.JPG" alt="Person" style="width:100%">
+    <div class="w3-container">
+      <h4><b>Christopher Camiolo</b></h4>
+      <p>DBA</p>
+    </div>
+  </div>
+
+  <div class="w3-card-2" style="width:20%;display: inline-block;padding: 5px;margin: 0.5%;">
+    <img src="img/team/saish.jpg" alt="Person" style="width:100%">
+    <div class="w3-container">
+      <h4><b>Saish Bhende</b></h4>
+      <p>Lead QA Analyst</p>
+    </div>
+  </div>
+
+  <div class="w3-card-2" style="width:20%;display: inline-block;padding: 5px;margin: 0.5%;">
+    <img src="img/team/yang.JPG" alt="Person" style="width:100%">
+    <div class="w3-container">
+      <h4><b>Yang Yang Chen</b></h4>
+      <p>QA Analyst</p>
+    </div>
+  </div>
+
+
+</div>
+
+</div>
 	
+	<footer>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-md-4">

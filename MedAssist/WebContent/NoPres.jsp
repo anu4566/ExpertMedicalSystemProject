@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Appointment Info</title>
+    <title>Prescription</title>
 	
     <!-- css -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -62,10 +62,8 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 				
-					<li class="active"><a href="Home.jsp">Home</a></li>
-				
-				<li><a href="viewappointment.jsp">Appointments</a></li>
-				<li><a href="SolveACase.jsp">Solve a case</a></li>
+				<li><a href="Symptoms.jsp">Submit a case</a></li>
+				<li><a href="PatHistory.jsp"> History</a></li>
 				
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Account<b class="caret"></b></a>
@@ -82,17 +80,28 @@
     <div>
  
 <!-- -------------------------------------------------------------------------------------------------- -->
+<div class="pre-box" id="printableArea">
 
-<div class="intro-content1" >
-	<div style="margin-left: 45%;">
- 		<img src="img/logo.png" alt="" width="150" height="40" /><br><br>
- 	</div>
- 	<div>
-	<h2	 style="margin-left: 10%;margin-right: 10%;color: #3fbbc0;"><strong>Prescription has been sent to the patient.Please go back for checking details on appointment.</strong></h2>
-	</div>
+<div class="h4" style="padding-left: 30px;padding-right: 30px;color: #3fbbc0;">	  
+Date :<%=request.getAttribute("date") %><br>
+Patient Name :<%=session.getAttribute("fname") %><br>
+<hr style="height:1px;border:none;color:#333;background-color:#333;" />
 
 </div>
-<!-- -------------------------------------------------------------------------------------------------- -->
+
+<div class="h1" style="color: #3fbbc0;margin-left: auto;margin-right: auto;font-size:25px;letter-spacing: 1px;word-spacing: 2px;">
+ <div style="margin-left: 35%;">
+ <img src="img/logo.png" alt="" width="150" height="40" /><br><br>
+ </div>
+ 
+<%=request.getAttribute("Meds") %>
+
+</div>
+
+<div style="padding-left:30%;margin-top: 10%;">
+<input type="button" onclick="printDiv('printableArea')" value="Print Your Report" class="btn-skin" style="height: 50px;width: 300px; font-size: 15px;"/></div>
+
+</div>
 
 	<footer>
 	

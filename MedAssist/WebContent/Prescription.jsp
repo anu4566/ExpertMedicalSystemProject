@@ -81,26 +81,26 @@
  
 <!-- -------------------------------------------------------------------------------------------------- -->
 <div class="pre-box" id="printableArea">
-<img style="margin-left: auto;margin-right: auto;" src="img/logo.png" alt="" width="150" height="40" /><br><br>
 
-<div class="h4" style="padding-left: 30px;padding-right: 30px;">	  
+<div class="h4" style="padding-left: 30px;padding-right: 30px;color: #3fbbc0;">	  
 Date :<%=request.getAttribute("date") %><br>
 Patient Name :<%=session.getAttribute("fname") %><br>
 <hr style="height:1px;border:none;color:#333;background-color:#333;" />
 
 </div>
 
-<div class="h1" style=" color:red; padding-left:30px;padding-right: 30px;">
+<div class="h1" style="color: #3fbbc0;margin-left: auto;margin-right: auto;font-size:25px;letter-spacing: 1px;word-spacing: 2px;">
+ <div style="margin-left: 35%;">
+ <img src="img/logo.png" alt="" width="150" height="40" /><br><br>
+ </div>
  The following prescription is recommended.<br>
 <%=request.getAttribute("Meds") %>(Morning-Noon-Night)<br>
-Naproxen (Morning)
 </div>
 
-<div style="padding-left:30%;">
-<input type="button" onclick="printDiv('printableArea')" value="Print Your Report" class="btn-skin" /></div>
+<div style="padding-left:30%;margin-top: 10%;">
+<input type="button" onclick="printDiv('printableArea')" value="Print Your Report" class="btn-skin" style="height: 50px;width: 300px; font-size: 15px;"/></div>
 
 </div>
-
 
 	<footer>
 	

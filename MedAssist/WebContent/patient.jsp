@@ -64,14 +64,13 @@
 				<li class="active"><a href="Home.jsp">Home</a></li>
 				
 				<li><a href="Symptoms.jsp">Submit a case</a></li>
-				<li><a href="PatHistory.jsp"> History</a></li>
-				
+				<li><a href="PatHistory.jsp">Patient History</a></li>
 				
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Account<b class="caret"></b></a>
 				  <ul class="dropdown-menu">
-				    <li><a href="ChgPackPatients.jsp">Change Package</a></li>
-					<li><a href="logout">Sign out</a></li>
+				  	<li><a href="ChgPackPatients.jsp">Change Package</a></li>
+				    <li><a href="logout">Sign out</a></li>
 				  </ul>
 				</li>
 				
@@ -82,17 +81,16 @@
 
 
 
-<center>
 <div class="intro-content"> 
-			 	<div class="container"> 
-				<div class="col-md-4 col-md-offset-4">					
-                                <div class="row"> 
-				<div class="col-lg-14">
-				<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
-				<h2 class="h-ultra">Welcome ${fname} ${lname}</h2>
+			 	<h5 style="text-align:center;">Welcome ${fname} ${lname}</h5><br>
 				
-</div></div></div></div></div></div></center>
+				<h3 style="text-align:center;">We are bringing together a global, online medical service to provide guidance for patients with difficult medical cases.<br> Our Expert System intend to help people all over the world<br></h3><br>
 
+				<h4 style="text-align:center;">Now, we are here to help to you!!!</h4><br>
+				
+				<center><a href="Symptoms.jsp" class="btn-skin">Submit a Case</a><center>
+
+</div>
 
 	<footer>
 	

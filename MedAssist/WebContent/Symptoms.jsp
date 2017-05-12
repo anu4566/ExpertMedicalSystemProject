@@ -1,3 +1,6 @@
+%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="UTF-8"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -62,13 +65,14 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 				
-				<li><a href="history">Patient History</a></li>
-				<li><a href="#">Schedule an appointment</a></li>
+				<li><a href="PatHistory.jsp">Patient History</a></li>
+				<li><a href="Symptoms.jsp"> Submit A Case</a></li>
 				
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>Account<b class="caret"></b></a>
 				  <ul class="dropdown-menu">
-				    <li><a href="ChgPackPatients.jsp">Change Package</a></li>
+				    <li><a href="#">Change Package</a></li>
+					<li><a href="#">Account Settings</a></li>
 					<li><a href="logout">Sign out</a></li>
 				  </ul>
 				</li>
@@ -119,11 +123,11 @@
                                 <li>
                                   <a name="aPain" value="ChestPain" href="javascript:;" onclick="myfunction3();">Chest pain</a>
                                 </li>
-                              
+                            <!--  
                                 <li>
                                     <a name="aPain" value="Constipation" href="javascript:;" onclick="myfunction4();">Constipation</a>
                                 </li>
-                            <!--
+                            
                                 <li>
                                     <a name="aPain" value="Cough" href="javascript:;" onclick="myfunction5();">Cough</a>
                                 </li>
@@ -231,7 +235,7 @@
                     <ol class="ol">
                         
                                 <li>
-                                    <a name="aPain" value="CAbdominal" href="javascript:;" onclick="myfunction29();">Abdominal pain</a></li>
+                                    <a name="aPain" value="CAbdominalPain" href="javascript:;" onclick="myfunction29();">Abdominal pain</a></li>
                             
                                 <li>
                                     <a name="aPain" value="CConstipation" href="javascript:;" onclick="myfunction30();">Constipation</a></li>
@@ -310,13 +314,13 @@
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
-        document.getElementById("chestpain").style.display = "block";
+        document.getElementById("ChestPain").style.display = "block";
     }
     function myfunction4() {
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
-        document.getElementById("constipation").style.display = "block";
+        document.getElementById("Constipation").style.display = "block";
     }
     function myfunction5() {
         document.getElementById("middle").style.display = "none";
@@ -467,19 +471,19 @@
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
-        document.getElementById("c_abdominal").style.display = "block";
+        document.getElementById("C_Abdominal").style.display = "block";
     }
     function myfunction30() {
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
-        document.getElementById("c_constipation").style.display = "block";
+        document.getElementById("C_Constipation").style.display = "block";
     }
     function myfunction31() {
         document.getElementById("middle").style.display = "none";
         document.getElementById("sideleft").style.display = "none";
         document.getElementById("sideright").style.display = "none";
-        document.getElementById("c_cough").style.display = "block";
+        document.getElementById("Cough").style.display = "block";
     }
     function myfunction32() {
         document.getElementById("middle").style.display = "none";
@@ -588,11 +592,12 @@
 
         <div class="wrapcol">
         <h5>Abdominal pain</h5>
+		<input type="hidden" name="disease" value="AbdominalPain">
         <h6>Find possible causes of abdominal pain based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
         <h5>Pain is</h5>
-		<input type="hidden" name="aPain" value="AbdominalPain">
+
         <ul class="checkbox-grid">
-           <li><input type="checkbox" name="AbdominalPain" value="Acute or began suddenly" /><label for="text1">Acute or began suddenly</label></li>
+			<li><input type="checkbox" name="AbdominalPain" value="Acute or began suddenly" /><label for="text1">Acute or began suddenly</label></li>
             <li><input type="checkbox" name="AbdominalPain" value="Burning" /><label for="text3">Burning</label></li>
             <li><input type="checkbox" name="AbdominalPain" value="Chronic or ongoing" /><label for="text5">Chronic or ongoing</label></li>
             </ul>
@@ -641,20 +646,20 @@
         <ul class="checkbox-grid">
             <li><input type="checkbox" name="AbdominalPain" value="Abdominal swelling" /><label for="text1">Abdominal swelling</label></li>
             <li><input type="checkbox" name="AbdominalPain" value="Black or bloody stools" /><label for="text3">Black or bloody stools</label></li>
-            <li><input type="checkbox" name="AbdominalPain" value="aPain" /><label for="text5">Constipation</label></li>
+            <li><input type="checkbox" name="AbdominalPain" value="Constipation" /><label for="text5">Constipation</label></li>
         </ul>
 
     </div>
                 
 
-        <br><div style="padding-left: 40%"><button ng-click="submit" class="btn-skin">Submit</button></div>
+        <br><div style="padding-left: 40%"><input type="submit" name="submit" value="submit" class="btn-skin"/></div>
 
     </div>
     
 </div>
-
+</form>
 <!---------------------------------------------------------------------------------------------------------------->
-
+<form action="submitcase" id="myform" method="post">
 <div id="bis">
         <div class="intro-content2">
         <div class="wrap">
@@ -674,13 +679,14 @@
 
         <div class="wrapcol">
         <h5>Blood In Stools</h5>
+		<input type="hidden" name="disease" value="BloodInStool">
         <h6>Find possible causes of blood in stool based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
         
         <h5>Blood Appears</h5>
-		<input type="hidden" name="aPain" value="BloodinStool">
+
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="BloodinStool" value="In or on the stool" /><label for="text1">In or on the stool</label></li>
-            <li><input type="checkbox" name="BloodinStool" value="In toilet bowl or on toilet tissue" /><label for="text2">In toilet bowl or on toilet tissue</label></li>
+            <li><input type="checkbox" name="BloodInStool" value="In or on the stool" /><label for="text1">In or on the stool</label></li>
+            <li><input type="checkbox" name="BloodInStool" value="In toilet bowl or on toilet tissue" /><label for="text2">In toilet bowl or on toilet tissue</label></li>
         </ul>
 
         </div>
@@ -688,9 +694,9 @@
         <h5>Triggered or worsened by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="BloodinStool" value="Drinking alcohol or caffeine" /><label for="text1">Drinking alcohol or caffeine</label></li>
-            <li><input type="checkbox" name="BloodinStool" value="Eating certain foods" /><label for="text2">Eating certain foods</label></li>
-            <li><input type="checkbox" name="BloodinStool" value="Straining during bowel movements" /><label for="text3">Straining during bowel movements</label></li>
+            <li><input type="checkbox" name="BloodInStool" value="Drinking alcohol or caffeine" /><label for="text1">Drinking alcohol or caffeine</label></li>
+            <li><input type="checkbox" name="BloodInStool" value="Eating certain foods" /><label for="text2">Eating certain foods</label></li>
+            <li><input type="checkbox" name="BloodInStool" value="Straining during bowel movements" /><label for="text3">Straining during bowel movements</label></li>
         </ul>
 
     </div>
@@ -699,9 +705,9 @@
         <h5>Relieved by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="BloodinStool" value="Drinking more water" /><label for="text1">Drinking more water</label></li>
-            <li><input type="checkbox" name="BloodinStool" value="Eating more fiber" /><label for="text3">Eating more fiber</label></li>
-            <li><input type="checkbox" name="BloodinStool" value="Eating certain foods" /><label for="text5">Eating certain foods</label></li>
+            <li><input type="checkbox" name="BloodInStool" value="Drinking more water" /><label for="text1">Drinking more water</label></li>
+            <li><input type="checkbox" name="BloodInStool" value="Eating more fiber" /><label for="text3">Eating more fiber</label></li>
+            <li><input type="checkbox" name="BloodInStool" value="Eating certain foods" /><label for="text5">Eating certain foods</label></li>
             
         </ul>
 
@@ -711,24 +717,24 @@
         <h5>Accompanied by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="BloodinStool" value="Abdominal Pain or cramping" /><label for="text1">Abdominal Pain or cramping</label></li>
-            <li><input type="checkbox" name="BloodinStool" value="Change in your bowel habits" /><label for="text3">Change in your bowel habits</label></li>
-            <li><input type="checkbox" name="BloodinStool" value="Diarrhea" /><label for="text5">Diarrhea</label></li>
+            <li><input type="checkbox" name="BloodInStool" value="Abdominal Pain or cramping" /><label for="text1">Abdominal Pain or cramping</label></li>
+            <li><input type="checkbox" name="BloodInStool" value="Change in your bowel habits" /><label for="text3">Change in your bowel habits</label></li>
+            <li><input type="checkbox" name="BloodInStool" value="Diarrhea" /><label for="text5">Diarrhea</label></li>
         </ul>
 
     </div>
-        <br><div style="padding-left: 40%"><button ng-click="submit" class="btn-skin">Submit</button></div>
+        <br><div style="padding-left: 40%"><input type="submit" name="submit" value="submit" class="btn-skin"/></div>
 
     </div>
     
 </div>
-      
+</form>
 <!--------------------------------------------------------------------------------------------------------------->
-
-<div id="chestpain">
+<form action="submitcase" id="myform" method="post">
+<div id="ChestPain">
         <div class="intro-content2">
         <div class="wrap">
-            <div id="left" style="background-color: #fff";>
+            <div id="left" style="background-color: #fff";>  
             <h4>Choose a Sympton</h4>
             </div>
 
@@ -744,15 +750,16 @@
 
         <div class="wrapcol">
         <h5>Chest Pain</h5>
+		<input type="hidden" name="disease" value="ChestPain">
         <h6>Find possible causes of chest pain based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
         
         <h5>Pain best described as</h5>
-		<input type="hidden" name="aPaim" value="ChestPain">
+
         <ul class="checkbox-grid">
             <li><input type="checkbox" name="ChestPain" value="Achy or gnawy" /><label for="text1">Achy or gnawy</label></li>
             <li><input type="checkbox" name="ChestPain" value="Severe" /><label for="text3">Severe</label></li>
             <li><input type="checkbox" name="ChestPain" value="Squeezing or pressure" /><label for="text5">Squeezing or pressure</label></li>
-         </ul>
+        </ul>
 
         </div>
     <div class="wrapcol">
@@ -773,7 +780,7 @@
             <li><input type="checkbox" name="ChestPain" value="Allergens or irritants" /><label for="text1">Allergens or irritants</label></li>
             <li><input type="checkbox" name="ChestPain" value="Exertion" /><label for="text3">Exertion</label></li>
             <li><input type="checkbox" name="ChestPain" value="Lying down for a long period" /><label for="text5">Lying down for a long period</label></li>
-           </ul>
+        </ul>
 
     </div>
 
@@ -796,21 +803,21 @@
             <li><input type="checkbox" name="ChestPain" value="Anxiety" /><label for="text1">Anxiety</label></li>
             <li><input type="checkbox" name="ChestPain" value="Cough with blood or phlegm" /><label for="text3">Cough with blood or phlegm</label></li>
             <li><input type="checkbox" name="ChestPain" value="Dry cough" /><label for="text5">Dry cough</label></li>
-           
+   
 
         </ul>
 
     </div>
                 
 
-        <br><div style="padding-left: 40%"><button ng-click="submit" class="btn-skin">Submit</button></div>
+        <br><div style="padding-left: 40%"><input type="submit" name="submit" value="submit" class="btn-skin"/></div>
 
     </div>
     
-</div>
-
-<!---------------------------------------------------------------------------------------------------------------->
-
+</div> 
+</form>
+<!----------------------------------------------------------------------------------------------------------------
+<form action="submitcase" id="myform" method="post">
 <div id="constipation">
         <div class="intro-content2">
         <div class="wrap">
@@ -830,8 +837,9 @@
 
         <div class="wrapcol">
         <h5>Constipation</h5>
+		<input type="hidden" name="disease" value="Constipation">
         <h6>Find possible causes of Constipation based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
-		<input type="hidden" name="aPain" value="Constipation">        
+        
         <h5>Problem is</h5>
 
         <ul class="checkbox-grid">
@@ -847,7 +855,7 @@
         <ul class="checkbox-grid">
             <li><input type="checkbox" name="Constipation" value="Abdominal pain" /><label for="text1">Abdominal pain</label></li>
             <li><input type="checkbox" name="Constipation" value="Bloody stools" /><label for="text3">Bloody stools</label></li>
-            <li><input type="checkbox" name="Constipation" value="aPain" /><label for="text5">Diarrhea</label></li>
+            <li><input type="checkbox" name="Constipation" value="Diarrhea" /><label for="text5">Diarrhea</label></li>
         </ul>
 
         <br><div style="padding-left: 40%"><button ng-click="submit" class="btn-skin">Submit</button></div>
@@ -855,10 +863,11 @@
     </div>
     
 </div>
-
-<!--cough-------------------------------------------------------------------------------------------------------------->
-<!--	
-<div id="Cough">
+</form>
+-->
+<!--cough--------------------------------------------------------------------------------------------------------------
+	<form action="submitcase" id="myform" method="post">
+<div id="cough">
         <div class="intro-content2">
         <div class="wrap">
             <div id="left" style="background-color: #fff";>
@@ -877,13 +886,14 @@
 
         <div class="wrapcol">
         <h5>Cough</h5>
+		<input type="hidden" name="disease" value="Cough">
         <h6>Find possible causes of cough based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
-		<input type="hidden" name="disease" value="Cough">        
+        
         <h5>Cough is</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="aPain" value="Dry" /><label for="text1">Dry</label></li>
-            <li><input type="checkbox" name="aPain" value="Producing phlegm or sputum" /><label for="text2">Producing phlegm or sputum</label></li>
+            <li><input type="checkbox" name="Cough" value="Dry" /><label for="text1">Dry</label></li>
+            <li><input type="checkbox" name="Cough" value="Producing phlegm or sputum" /><label for="text2">Producing phlegm or sputum</label></li>
         </ul>
 
         </div>
@@ -891,9 +901,9 @@
         <h5>Problem is</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="aPain" value="New or recent" /><label for="text1">New or recent</label></li>
-            <li><input type="checkbox" name="aPain" value="Ongoing or recurrent" /><label for="text2">Ongoing or recurrent</label></li>
-            <li><input type="checkbox" name="aPain" value="Worsening or progressing" /><label for="text3">Worsening or progressing</label></li>
+            <li><input type="checkbox" name="Cough" value="New or recent" /><label for="text1">New or recent</label></li>
+            <li><input type="checkbox" name="Cough" value="Ongoing or recurrent" /><label for="text2">Ongoing or recurrent</label></li>
+            <li><input type="checkbox" name="Cough" value="Worsening or progressing" /><label for="text3">Worsening or progressing</label></li>
         </ul>
 
     </div>
@@ -902,7 +912,7 @@
         <h5>Triggered or worsened by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="aPain" value="Allergens or irritants" /><label for="text1">Allergens or irritants</label></li>  
+            <li><input type="checkbox" name="Cough" value="Allergens or irritants" /><label for="text1">Allergens or irritants</label></li>  
         </ul>
 
     </div>
@@ -911,9 +921,9 @@
         <h5>Accompanied by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="aPain" value="Chest pain or tightness" /><label for="text1">Chest pain or tightness</label></li>
-            <li><input type="checkbox" name="aPain" value="Difficult or painful swallowing" /><label for="text3">Difficult or painful swallowing</label></li>
-            <li><input type="checkbox" name="aPain" value="Fever" /><label for="text5">Fever</label></li>
+            <li><input type="checkbox" name="Cough" value="Chest pain or tightness" /><label for="text1">Chest pain or tightness</label></li>
+            <li><input type="checkbox" name="Cough" value="Difficult or painful swallowing" /><label for="text3">Difficult or painful swallowing</label></li>
+            <li><input type="checkbox" name="Cough" value="Fever" /><label for="text5">Fever</label></li>
         </ul>
 
     </div>
@@ -922,10 +932,11 @@
     </div>
     
 </div>
+</form>
 -->
-<!--dairrhea-------------------------------------------------------------------------------------------------------------->
-<!--
-<div id="Diarrhea">
+<!--dairrhea--------------------------------------------------------------------------------------------------------------
+<form action="submitcase" id="myform" method="post">
+<div id="diarrhea">
         <div class="intro-content2">
         <div class="wrap">
             <div id="left" style="background-color: #fff";>
@@ -944,14 +955,15 @@
 
         <div class="wrapcol">
         <h5>Diarrhea</h5>
+		<input type="hidden" name="disease" value="Diarrhea">
         <h6>Find possible causes of diarrhea based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
-		<input type="hidden" name="disease" value="Diarrhea">        
+        
         <h5>Problem is</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="aPain" value="Ongoing or recurrent (weeks to years)" /><label for="text1">Ongoing or recurrent (weeks to years)</label></li>
-            <li><input type="checkbox" name="aPain" value="Preceded by recent antibiotic use" /><label for="text3">Preceded by recent antibiotic use</label></li>
-            <li><input type="checkbox" name="aPain" value="Sudden (hours to days)" /><label for="text5">Sudden (hours to days)</label></li>
+            <li><input type="checkbox" name="Diarrhea" value="Ongoing or recurrent (weeks to years)" /><label for="text1">Ongoing or recurrent (weeks to years)</label></li>
+            <li><input type="checkbox" name="Diarrhea" value="Preceded by recent antibiotic use" /><label for="text3">Preceded by recent antibiotic use</label></li>
+            <li><input type="checkbox" name="Diarrhea" value="Sudden (hours to days)" /><label for="text5">Sudden (hours to days)</label></li>
         </ul>
 
         </div>
@@ -959,7 +971,7 @@
         <h5>Triggered by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="aPain" value="Eating certain foods" /><label for="text1">Eating certain foods</label></li>
+            <li><input type="checkbox" name="Diarrhea" value="Eating certain foods" /><label for="text1">Eating certain foods</label></li>
         </ul>
 
     </div>
@@ -968,7 +980,7 @@
         <h5>Relieved by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="aPain" value="Avoiding certain foods" /><label for="text1">Avoiding certain foods</label></li>           
+            <li><input type="checkbox" name="Diarrhea" value="Avoiding certain foods" /><label for="text1">Avoiding certain foods</label></li>           
         </ul>
 
     </div>
@@ -977,9 +989,9 @@
         <h5>Accompanied by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="aPain" value="Abdominal pain or cramping" /><label for="text1">Abdominal pain or cramping</label></li>
-            <li><input type="checkbox" name="aPain" value="Bloody stools" /><label for="text3">Bloody stools</label></li>
-            <li><input type="checkbox" name="aPain" value="Fever" /><label for="text5">Fever</label></li>
+            <li><input type="checkbox" name="Diarrhea" value="Abdominal pain or cramping" /><label for="text1">Abdominal pain or cramping</label></li>
+            <li><input type="checkbox" name="Diarrhea" value="Bloody stools" /><label for="text3">Bloody stools</label></li>
+            <li><input type="checkbox" name="Diarrhea" value="Fever" /><label for="text5">Fever</label></li>
         </ul>
 
     </div>
@@ -991,9 +1003,11 @@
     </div>
     
 </div>
+</form>
 -->
 <!--swallowing-------------------------------------------------------------------------------------------------------------->
 <!--
+<form action="submitcase" id="myform" method="post">
 <div id="swallowing">
         <div class="intro-content2">
         <div class="wrap">
@@ -1013,13 +1027,14 @@
 
         <div class="wrapcol">
         <h5>Difficulty swallowing</h5>
+		<input type="hidden" name="disease" value="Difficulty Swallowing">
         <h6>Difficulty swallowing is usually the result of damage to the esophagus, blockage of the esophagus, or poor function of the nerves and muscles that control swallowing. Find possible causes of difficulty swallowing based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
-		<input type="hidden" name="disease" value="Swallowing">        
+        
         <h5>Swallowing</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="swallowing" value="value1" /><label for="text1">Hurts</label></li>
-            <li><input type="checkbox" name="swallowing" value="value2" /><label for="text2">Takes effort</label></li>
+            <li><input type="checkbox" name="DifficultySwallowing" value="value1" /><label for="text1">Hurts</label></li>
+            <li><input type="checkbox" name="DifficultySwallowing" value="value2" /><label for="text2">Takes effort</label></li>
         </ul>
 
         </div>
@@ -1027,7 +1042,7 @@
         <h5>Triggered or worsened by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="swallowing" value="value1" /><label for="text1">Eating certain foods</label></li>
+            <li><input type="checkbox" name="DifficultySwallowing" value="value1" /><label for="text1">Eating certain foods</label></li>
         </ul>
 
     </div>
@@ -1037,24 +1052,10 @@
         <h5>Accompanied by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="swallowing" value="value1" /><label for="text1">Bad breath</label></li>
-            <li><input type="checkbox" name="swallowing" value="value2" /><label for="text2">Cough</label></li>
-            <li><input type="checkbox" name="swallowing" value="value3" /><label for="text3">Difficulty breathing</label></li>
-            <li><input type="checkbox" name="swallowing" value="value4" /><label for="text4">Dry mouth</label></li>
-            <li><input type="checkbox" name="swallowing" value="value5" /><label for="text5">Earache</label></li>
-            <li><input type="checkbox" name="swallowing" value="value6" /><label for="text6">Feeling of something stuck in your throat</label></li>
-            <li><input type="checkbox" name="swallowing" value="value7" /><label for="text7">Heartburn</label></li>
-            <li><input type="checkbox" name="swallowing" value="value8" /><label for="text8">Hoarse voice or difficulty speaking</label></li>
-            <li><input type="checkbox" name="swallowing" value="value9" /><label for="text9">Jaw pain or stiffness</label></li>
-            <li><input type="checkbox" name="swallowing" value="value10" /><label for="text10">Loose teeth or poorly fitting dentures</label></li>
-            <li><input type="checkbox" name="swallowing" value="value11" /><label for="text11">Lump in front of neck</label></li>
-            <li><input type="checkbox" name="swallowing" value="value12" /><label for="text12">Mouth sores, lumps or pain</label></li>
-            <li><input type="checkbox" name="swallowing" value="value13" /><label for="text13">Pain in chest or back</label></li>
-            <li><input type="checkbox" name="swallowing" value="value14" /><label for="text14">Regurgitation of food or sour liquid</label></li>
-            <li><input type="checkbox" name="swallowing" value="value15" /><label for="text15">Sore throat</label></li>
-            <li><input type="checkbox" name="swallowing" value="value16" /><label for="text16">Thick saliva</label></li>
-            <li><input type="checkbox" name="swallowing" value="value17" /><label for="text17">Unintended weight loss</label></li>
-
+            <li><input type="checkbox" name="DifficultySwallowing" value="value1" /><label for="text1">Bad breath</label></li>
+            <li><input type="checkbox" name="DifficultySwallowing" value="value3" /><label for="text3">Difficulty breathing</label></li>
+            <li><input type="checkbox" name="DifficultySwallowing" value="value5" /><label for="text5">Earache</label></li>
+    
 
         </ul>
 
@@ -1066,9 +1067,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--dizziness------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="dizziness">
         <div class="intro-content2">
         <div class="wrap">
@@ -1088,14 +1090,15 @@
 
         <div class="wrapcol">
         <h5>Dizziness</h5>
+		<input type="hidden" name="disease" value="Dizziness">
         <h6>Find possible causes of dizziness based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
- 		<input type="hidden" name="disease" value="Dizziness">       
+        
         <h5>You feel</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="dizziness" value="value1" /><label for="text1">A spinning sensation</label></li>
-            <li><input type="checkbox" name="dizziness" value="value2" /><label for="text2">Lightheaded or faint</label></li>
-            <li><input type="checkbox" name="dizziness" value="value3" /><label for="text3">Unsteady</label></li>
+            <li><input type="checkbox" name="Dizziness" value="value1" /><label for="text1">A spinning sensation</label></li>
+            <li><input type="checkbox" name="Dizziness" value="value2" /><label for="text2">Lightheaded or faint</label></li>
+            <li><input type="checkbox" name="Dizziness" value="value3" /><label for="text3">Unsteady</label></li>
         </ul>
 
         </div>
@@ -1103,9 +1106,9 @@
         <h5>Symptoms are</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="dizziness" value="value1" /><label for="text1">New or sudden</label></li>
-            <li><input type="checkbox" name="dizziness" value="value2" /><label for="text2">Recurrent or ongoing</label></li>
-            <li><input type="checkbox" name="dizziness" value="value3" /><label for="text3">Worsening or progressing</label></li>
+            <li><input type="checkbox" name="Dizziness" value="value1" /><label for="text1">New or sudden</label></li>
+            <li><input type="checkbox" name="Dizziness" value="value2" /><label for="text2">Recurrent or ongoing</label></li>
+            <li><input type="checkbox" name="Dizziness" value="value3" /><label for="text3">Worsening or progressing</label></li>
         </ul>
 
     </div>
@@ -1114,7 +1117,7 @@
         <h5>Triggered or worsened by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="dizziness" value="value1" /><label for="text1">A change in head or body position</label></li>
+            <li><input type="checkbox" name="Dizziness" value="value1" /><label for="text1">A change in head or body position</label></li>
         </ul>
 
     </div>
@@ -1123,22 +1126,9 @@
         <h5>Accompanied by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="dizziness" value="value1" /><label for="text1">Anxiety</label></li>
-            <li><input type="checkbox" name="dizziness" value="value2" /><label for="text2">Blurred or double vision</label></li>
-            <li><input type="checkbox" name="dizziness" value="value3" /><label for="text3">Buzzing or ringing in ear</label></li>
-            <li><input type="checkbox" name="dizziness" value="value4" /><label for="text4">Chest pain or tightness</label></li>
-            <li><input type="checkbox" name="dizziness" value="value5" /><label for="text5">Confusion</label></li>
-            <li><input type="checkbox" name="dizziness" value="value6" /><label for="text6">Ear pain or pressure</label></li>
-            <li><input type="checkbox" name="dizziness" value="value7" /><label for="text7">Fever</label></li>
-            <li><input type="checkbox" name="dizziness" value="value8" /><label for="text8">Hearing loss</label></li>
-            <li><input type="checkbox" name="dizziness" value="value9" /><label for="text9">Nausea or vomiting</label></li>
-            <li><input type="checkbox" name="dizziness" value="value10" /><label for="text10">Numbness or weakness on one side of body</label></li>
-            <li><input type="checkbox" name="dizziness" value="value11" /><label for="text11">Pain in neck, jaw, arms, shoulders or back</label></li>
-            <li><input type="checkbox" name="dizziness" value="value12" /><label for="text12">Rapid or irregular heartbeat</label></li>
-            <li><input type="checkbox" name="dizziness" value="value13" /><label for="text13">Severe headache</label></li>
-            <li><input type="checkbox" name="dizziness" value="value14" /><label for="text14">Shortness of breath</label></li>
-            <li><input type="checkbox" name="dizziness" value="value15" /><label for="text15">Slurred speech</label></li>
-            <li><input type="checkbox" name="dizziness" value="value16" /><label for="text16">Sweating</label></li>
+            <li><input type="checkbox" name="Dizziness" value="value1" /><label for="text1">Anxiety</label></li>
+            <li><input type="checkbox" name="Dizziness" value="value3" /><label for="text3">Buzzing or ringing in ear</label></li>
+            <li><input type="checkbox" name="Dizziness" value="value5" /><label for="text5">Confusion</label></li>
         </ul>
 
     </div>
@@ -1148,9 +1138,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--eye------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="eye">
         <div class="intro-content2">
         <div class="wrap">
@@ -1170,18 +1161,15 @@
 
         <div class="wrapcol">
         <h5>Eye discomfort and redness</h5>
+		<input type="hidden" name="disease" value="Eye discomfort and redness">
         <h6>Find possible causes of eye discomfort and redness based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
         
         <h5>Eye discomfort best described as</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="eye" value="value1" /><label for="text1">Ache</label></li>
-            <li><input type="checkbox" name="eye" value="value2" /><label for="text2">Dry or itchy</label></li>
-            <li><input type="checkbox" name="eye" value="value3" /><label for="text3">Gritty sensation</label></li>
-            <li><input type="checkbox" name="eye" value="value4" /><label for="text4">Stinging or burning sensation</label></li>
-            <li><input type="checkbox" name="eye" value="value5" /><label for="text5">Sensitivity to light</label></li>
-            <li><input type="checkbox" name="eye" value="value6" /><label for="text6">Severe pain</label></li>
-            <li><input type="checkbox" name="eye" value="value7" /><label for="text7">Redness without actual discomfort</label></li>
+            <li><input type="checkbox" name="EyeDiscomfortAndRedness" value="value1" /><label for="text1">Ache</label></li>
+            <li><input type="checkbox" name="EyeDiscomfortAndRedness" value="value5" /><label for="text5">Sensitivity to light</label></li>
+            <li><input type="checkbox" name="EyeDiscomfortAndRedness" value="value3" /><label for="text3">Gritty sensation</label></li>
         </ul>
 
         </div>
@@ -1190,13 +1178,9 @@
         <h5>Appearance of eye includes</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="eye" value="value1" /><label for="text1">Bleeding on the surface of the white of the eye</label></li>
-            <li><input type="checkbox" name="eye" value="value2" /><label for="text2">Crusted eyelashes after sleeping</label></li>
-            <li><input type="checkbox" name="eye" value="value3" /><label for="text3">Excessive tearing</label></li>
-            <li><input type="checkbox" name="eye" value="value4" /><label for="text4">Red, painful lump on the eyelid</label></li>
-            <li><input type="checkbox" name="eye" value="value5" /><label for="text5">Redness</label></li>
-            <li><input type="checkbox" name="eye" value="value6" /><label for="text6">Stringy mucus in or around the eye</label></li>
-            <li><input type="checkbox" name="eye" value="value7" /><label for="text7">Swelling around the eye</label></li>
+            <li><input type="checkbox" name="EyeDiscomfortAndRedness" value="value1" /><label for="text1">Bleeding on the surface of the white of the eye</label></li>
+            <li><input type="checkbox" name="EyeDiscomfortAndRedness" value="value3" /><label for="text3">Excessive tearing</label></li>
+            <li><input type="checkbox" name="EyeDiscomfortAndRedness" value="value5" /><label for="text5">Redness</label></li>
         </ul>
 
         </div>
@@ -1205,9 +1189,9 @@
         <h5>Vision problem includes</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="eye" value="value1" /><label for="text1">Blurred vision</label></li>
-            <li><input type="checkbox" name="eye" value="value2" /><label for="text2">Vision loss</label></li>
-            <li><input type="checkbox" name="eye" value="value3" /><label for="text3">Dark, floating spots in vision</label></li>
+            <li><input type="checkbox" name="EyeDiscomfortAndRedness" value="value1" /><label for="text1">Blurred vision</label></li>
+            <li><input type="checkbox" name="EyeDiscomfortAndRedness" value="value2" /><label for="text2">Vision loss</label></li>
+            <li><input type="checkbox" name="EyeDiscomfortAndRedness" value="value3" /><label for="text3">Dark, floating spots in vision</label></li>
         </ul>
 
     </div>
@@ -1216,8 +1200,8 @@
         <h5>Triggered by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="eye" value="value1" /><label for="text1">Allergens or other irritants</label></li>
-            <li><input type="checkbox" name="eye" value="value2" /><label for="text2">Injury or trauma</label></li>
+            <li><input type="checkbox" name="EyeDiscomfortAndRedness" value="value1" /><label for="text1">Allergens or other irritants</label></li>
+            <li><input type="checkbox" name="EyeDiscomfortAndRedness" value="value2" /><label for="text2">Injury or trauma</label></li>
         </ul>
 
     </div>
@@ -1226,8 +1210,8 @@
         <h5>Worsened by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="eye" value="value1" /><label for="text1">Dry, warm air</label></li>
-            <li><input type="checkbox" name="eye" value="value2" /><label for="text2">Eye movement</label></li>
+            <li><input type="checkbox" name="EyeDiscomfortAndRedness" value="value1" /><label for="text1">Dry, warm air</label></li>
+            <li><input type="checkbox" name="EyeDiscomfortAndRedness" value="value2" /><label for="text2">Eye movement</label></li>
         </ul>
 
     </div>
@@ -1236,7 +1220,7 @@
         <h5>Accompanied by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="eye" value="value1" /><label for="text1">Runny or stuffy nose</label></li>
+            <li><input type="checkbox" name="EyeDiscomfortAndRedness" value="value1" /><label for="text1">Runny or stuffy nose</label></li>
         </ul>
 
     </div>
@@ -1247,9 +1231,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--footpain--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="footpain">
         <div class="intro-content2">
         <div class="wrap">
@@ -1269,20 +1254,15 @@
 
         <div class="wrapcol">
         <h5>Foot pain or ankle pain</h5>
+		<input type="hidden" name="disease" value="Foot pain or ankle pain">
         <h6>Find possible causes of foot pain or ankle pain based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
         
         <h5>Located in</h5>
 
         <ul class="checkbox-grid">
             <li><input type="checkbox" name="footpain" value="value1" /><label for="text1">Ankle</label></li>
-            <li><input type="checkbox" name="footpain" value="value2" /><label for="text2">Area along edge of toenail</label></li>
             <li><input type="checkbox" name="footpain" value="value3" /><label for="text3">Back of ankle</label></li>
-            <li><input type="checkbox" name="footpain" value="value4" /><label for="text4">Back of heel</label></li>
             <li><input type="checkbox" name="footpain" value="value5" /><label for="text5">Bottom of foot</label></li>
-            <li><input type="checkbox" name="footpain" value="value6" /><label for="text6">Heel</label></li>
-            <li><input type="checkbox" name="footpain" value="value7" /><label for="text7">Middle part of foot</label></li>
-            <li><input type="checkbox" name="footpain" value="value8" /><label for="text8">Toe or front part of foot</label></li>
-            <li><input type="checkbox" name="footpain" value="value9" /><label for="text9">Whole foot</label></li>
         </ul>
 
         </div>
@@ -1327,9 +1307,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--footswelling------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="footswelling">
         <div class="intro-content2">
         <div class="wrap">
@@ -1431,9 +1412,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--headache-------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="headache">
         <div class="intro-content2">
         <div class="wrap">
@@ -1560,9 +1542,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--heart--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="heart">
         <div class="intro-content2">
         <div class="wrap">
@@ -1644,9 +1627,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--hip--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="hip">
         <div class="intro-content2">
         <div class="wrap">
@@ -1710,9 +1694,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--knee--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="knee">
         <div class="intro-content2">
         <div class="wrap">
@@ -1793,9 +1778,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--backpain--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="backpain">
         <div class="intro-content2">
         <div class="wrap">
@@ -1877,9 +1863,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--nasal--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="nasal">
         <div class="intro-content2">
         <div class="wrap">
@@ -1948,9 +1935,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--nausea--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="nausea">
         <div class="intro-content2">
         <div class="wrap">
@@ -2025,9 +2013,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--neck--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="neck">
         <div class="intro-content2">
         <div class="wrap">
@@ -2090,9 +2079,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--numbness--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="numbness">
         <div class="intro-content2">
         <div class="wrap">
@@ -2163,9 +2153,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--pelvicf--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="pelvicf">
         <div class="intro-content2">
         <div class="wrap">
@@ -2247,9 +2238,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--pelvicm--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="pelvicm">
         <div class="intro-content2">
         <div class="wrap">
@@ -2309,9 +2301,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--breath--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="breath">
         <div class="intro-content2">
         <div class="wrap">
@@ -2396,9 +2389,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--shoulder--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="shoulder">
         <div class="intro-content2">
         <div class="wrap">
@@ -2471,9 +2465,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--sore--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="sore">
         <div class="intro-content2">
         <div class="wrap">
@@ -2526,8 +2521,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--urinary--------------------------------------------------------------------------------------------------------------
+<form action="submitcase" id="myform" method="post">
 <div id="urinary">
         <div class="intro-content2">
         <div class="wrap">
@@ -2617,9 +2614,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--vision--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="vision">
         <div class="intro-content2">
         <div class="wrap">
@@ -2738,9 +2736,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--wheezing--------------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="wheezing">
         <div class="intro-content2">
         <div class="wrap">
@@ -2818,11 +2817,11 @@
     </div>
     
 </div>
+</form>
 -->
-
-<!--c_abdominal------------------------------------------------------------------------------------------------------------>
-
-<div id="c_abdominal">
+<!--CAbdominalPain------------------------------------------------------------------------------------------------------------>
+<form action="submitcase" id="myform" method="post">
+<div id="C_Abdominal">
         <div class="intro-content2">
         <div class="wrap">
             <div id="left" style="background-color: #fff";>
@@ -2841,14 +2840,15 @@
 
         <div class="wrapcol">
         <h5>Abdominal pain</h5>
+		<input type="hidden" name="disease" value="CAbdominalPain">
         <h6>Find possible causes of abdominal pain based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
-		<input type="hidden" name="aPain" value="AbdominalPain">        
+        
         <h5>Pain is</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="AbdominalPain" value="Crampy" /><label for="text1">Crampy</label></li>
-            <li><input type="checkbox" name="AbdominalPain" value="Intense" /><label for="text3">Intense</label></li>
-            <li><input type="checkbox" name="AbdominalPain" value="Located in lower abdomen" /><label for="text5">Located in lower abdomen</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Crampy" /><label for="text1">Crampy</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Intense" /><label for="text3">Intense</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Located in lower abdomen" /><label for="text5">Located in lower abdomen</label></li>
         </ul>
 
         </div>
@@ -2857,9 +2857,9 @@
         <h5>Onset is</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="AbdominalPain" value="Intermittent or episodic" /><label for="text1">Intermittent or episodic</label></li>
-            <li><input type="checkbox" name="AbdominalPain" value="Sudden (minutes to hours)" /><label for="text2">Sudden (minutes to hours)</label></li>
-            <li><input type="checkbox" name="AbdominalPain" value="Recent (hours to days)" /><label for="text3">Recent (hours to days)</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Intermittent or episodic" /><label for="text1">Intermittent or episodic</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Sudden (minutes to hours)" /><label for="text2">Sudden (minutes to hours)</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Recent (hours to days)" /><label for="text3">Recent (hours to days)</label></li>
         </ul>
 
         </div>
@@ -2868,8 +2868,8 @@
         <h5>Preceded by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="AbdominalPain" value="Eating suspect food" /><label for="text1">Eating suspect food</label></li>
-            <li><input type="checkbox" name="AbdominalPain" value="Recent antibiotic use" /><label for="text2">Recent antibiotic use</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Eating suspect food" /><label for="text1">Eating suspect food</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Recent antibiotic use" /><label for="text2">Recent antibiotic use</label></li>
             
         </ul>
 
@@ -2879,9 +2879,9 @@
         <h5>Triggered or worsened by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="AbdominalPain" value="Coughing or other jarring movements" /><label for="text1">Coughing or other jarring movements</label></li>
-            <li><input type="checkbox" name="AbdominalPain" value="Menstrual cycle" /><label for="text3">Menstrual cycle</label></li>
-            <li><input type="checkbox" name="AbdominalPain" value="Stress" /><label for="text4">Stress</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Coughing or other jarring movements" /><label for="text1">Coughing or other jarring movements</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Menstrual cycle" /><label for="text3">Menstrual cycle</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Stress" /><label for="text4">Stress</label></li>
         </ul>
 
         </div>
@@ -2890,9 +2890,9 @@
         <h5>Relieved by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="AbdominalPain" value="Avoiding certain foods" /><label for="text1">Avoiding certain foods</label></li>
-            <li><input type="checkbox" name="AbdominalPain" value="Drinking more water" /><label for="text2">Drinking more water</label></li>
-            <li><input type="checkbox" name="AbdominalPain" value="Eating more fiber" /><label for="text3">Eating more fiber</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Avoiding certain foods" /><label for="text1">Avoiding certain foods</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Drinking more water" /><label for="text2">Drinking more water</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Eating more fiber" /><label for="text3">Eating more fiber</label></li>
         </ul>
 
         </div>
@@ -2903,22 +2903,22 @@
         <h5>Accompanied by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="AbdominalPain" value="Constipation" /><label for="text1">Constipation</label></li>
-            <li><input type="checkbox" name="AbdominalPain" value="Diarrhea" /><label for="text3">Diarrhea</label></li>
-            <li><input type="checkbox" name="AbdominalPain" value="Fever" /><label for="text5">Fever</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Constipation" /><label for="text1">Constipation</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Diarrhea" /><label for="text3">Diarrhea</label></li>
+            <li><input type="checkbox" name="CAbdominalPain" value="Fever" /><label for="text5">Fever</label></li>
             
-		</ul>
+
     </div>
 
-        <br><div style="padding-left: 40%"><button ng-click="submit" class="btn-skin">Submit</button></div>
+        <br><div style="padding-left: 40%"><input type="submit" name="submit" value="submit" class="btn-skin"/></div>
 
     </div>
     
 </div>
-
-<!--c_constipation-------------------------------------------------------------------------------------------------------->
-
-<div id="c_constipation">
+</form>
+<!--CConstipation-------------------------------------------------------------------------------------------------------->
+<form action="submitcase" id="myform" method="post">
+<div id="C_Constipation">
         <div class="intro-content2">
         <div class="wrap">
             <div id="left" style="background-color: #fff";>
@@ -2937,13 +2937,14 @@
 
         <div class="wrapcol">
         <h5>Constipation</h5>
-        <h6>Find possible causes of constipation based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
-		<input type="hidden" name="aPain" value="Constipation">        
+				<input type="hidden" name="disease" value="CConstipation">
+        <h6>Find possible causes of Constipation based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
+        
         <h5>Problem is</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="Constipation" value="Ongoing or recurrent" /><label for="text1">Ongoing or recurrent</label></li>
-            <li><input type="checkbox" name="Constipation" value="Recent" /><label for="text2">Recent</label></li></li>
+            <li><input type="checkbox" name="CConstipation" value="Ongoing or recurrent" /><label for="text1">Ongoing or recurrent</label></li>
+            <li><input type="checkbox" name="CConstipation" value="Recent" /><label for="text2">Recent</label></li></li>
            
         </ul>
 
@@ -2953,7 +2954,7 @@
         <h5>Triggered by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="Constipation" value="Avoiding regular bowel movements" /><label for="text1">Avoiding regular bowel movements</label></li>
+            <li><input type="checkbox" name="CConstipation" value="Avoiding regular bowel movements" /><label for="text1">Avoiding regular bowel movements</label></li>
             
         </ul>
 
@@ -2964,24 +2965,24 @@
         <h5>Accompanied by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="Constipation" value="Abdominal pain" /><label for="text1">Abdominal pain</label></li>
-            <li><input type="checkbox" name="Constipation" value="Anal or rectal pain" /><label for="text3">Anal or rectal pain</label></li>
-            <li><input type="checkbox" name="Constipation" value="Diarrhea" /><label for="text5">Diarrhea</label></li>
+            <li><input type="checkbox" name="CConstipation" value="Abdominal pain" /><label for="text1">Abdominal pain</label></li>
+            <li><input type="checkbox" name="CConstipation" value="Anal or rectal pain" /><label for="text3">Anal or rectal pain</label></li>
+            <li><input type="checkbox" name="CConstipation" value="Diarrhea" /><label for="text5">Diarrhea</label></li>
             
          
         </ul>
 
     </div>
 
-        <br><div style="padding-left: 40%"><button ng-click="submit" class="btn-skin">Submit</button></div>
+        <br><div style="padding-left: 40%"><input type="submit" name="submit" value="submit" class="btn-skin"/></div>
 
     </div>
     
 </div>
-
-<!--c_cough-------------------------------------------------------------------------------------------------------->
-
-<div id="c_cough">
+</form>
+<!--CCough-------------------------------------------------------------------------------------------------------->
+<form action="submitcase" id="myform" method="post">
+<div id="Cough">
         <div class="intro-content2">
         <div class="wrap">
             <div id="left" style="background-color: #fff";>
@@ -3000,13 +3001,14 @@
 
         <div class="wrapcol">
         <h5>Cough</h5>
+				<input type="hidden" name="disease" value="CCough">
         <h6>Find possible causes of cough based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
-  		<input type="hidden" name="aPain" value="Cough">      
+        
         <h5>Cough is</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="Cough" value="Dry" /><label for="text1">Dry</label></li>
-            <li><input type="checkbox" name="Cough" value="Producing phlegm or sputum" /><label for="text2">Producing phlegm or sputum</label></li></li>
+            <li><input type="checkbox" name="CCough" value="Dry" /><label for="text1">Dry</label></li>
+            <li><input type="checkbox" name="CCough" value="Producing phlegm or sputum" /><label for="text2">Producing phlegm or sputum</label></li></li>
         </ul>
 
         </div>
@@ -3015,9 +3017,9 @@
         <h5>Problem is</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="Cough" value="New or recent" /><label for="text1">New or recent</label></li>
-            <li><input type="checkbox" name="Cough" value="Worsening or progressing" /><label for="text2">Worsening or progressing</label></li>
-            <li><input type="checkbox" name="Cough" value="Ongoing or recurrent" /><label for="text3">Ongoing or recurrent</label></li>
+            <li><input type="checkbox" name="CCough" value="New or recent" /><label for="text1">New or recent</label></li>
+            <li><input type="checkbox" name="CCough" value="Worsening or progressing" /><label for="text2">Worsening or progressing</label></li>
+            <li><input type="checkbox" name="CCough" value="Ongoing or recurrent" /><label for="text3">Ongoing or recurrent</label></li>
         </ul>
 
         </div>
@@ -3026,7 +3028,7 @@
         <h5>Triggered or worsened by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="Cough" value="Allergens or irritants" /><label for="text1">Allergens or irritants</label></li>
+            <li><input type="checkbox" name="CCough" value="Allergens or irritants" /><label for="text1">Allergens or irritants</label></li>
         </ul>
 
         </div>
@@ -3035,21 +3037,21 @@
         <h5>Accompanied by</h5>
 
         <ul class="checkbox-grid">
-            <li><input type="checkbox" name="Cough" value="Chest pain or tightness" /><label for="text1">Chest pain or tightness</label></li>
-            <li><input type="checkbox" name="Cough" value="Chills or sweating" /><label for="text3">Chills or sweating</label></li>
-    		<li><input type="checkbox" name="Cough" value="Diarrhea" /><label for="text5">Diarrhea</label></li>
-			</ul>
+            <li><input type="checkbox" name="CCough" value="Chest pain or tightness" /><label for="text1">Chest pain or tightness</label></li>
+            <li><input type="checkbox" name="CCough" value="Chills or sweating" /><label for="text3">Chills or sweating</label></li>
+			<li><input type="checkbox" name="CCough" value="Diarrhea" /><label for="text5">Diarrhea</label></li>
+        </ul>
 
         </div>
 
-        <br><div style="padding-left: 40%"><button ng-click="submit" class="btn-skin">Submit</button></div>
+        <br><div ><input type="submit" name="submit" value="submit" style="width:100%;height:100%;" class="btn-skin"  /></div>
 
     </div>
     
 </div>
-
+</form>
 <!--c_hearing--------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="c_hearing">
         <div class="intro-content2">
         <div class="wrap">
@@ -3069,16 +3071,15 @@
 
         <div class="wrapcol">
         <h5>Decreased hearing</h5>
+				<input type="hidden" name="disease" value="Decreased hearing">
         <h6>Find possible causes of decreased hearing based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
         
         <h5>Triggered by</h5>
 
         <ul class="checkbox-grid">
             <li><input type="checkbox" name="c_hearing" value="value1" /><label for="text1">Change in air pressure</label></li>
-            <li><input type="checkbox" name="c_hearing" value="value2" /><label for="text2">Injury or trauma</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value3" /><label for="text2">Cold or upper respiratory illness</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value4" /><label for="text2">Loud, sudden noise</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value5" /><label for="text2">Foreign object in ear</label></li>
+            <li><input type="checkbox" name="c_hearing" value="value3" /><label for="text2">Cold or upper respiratory illness</label></li>
+			<li><input type="checkbox" name="c_hearing" value="value5" /><label for="text2">Foreign object in ear</label></li>
         </ul>
 
         </div>
@@ -3097,24 +3098,8 @@
 
         <ul class="checkbox-grid">
             <li><input type="checkbox" name="c_hearing" value="value1" /><label for="text1">Chest pain or tightness</label></li>
-            <li><input type="checkbox" name="c_hearing" value="value2" /><label for="text2">Nausea or vomiting</label></li>
             <li><input type="checkbox" name="c_hearing" value="value3" /><label for="text3">Chills or sweating</label></li>
-            <li><input type="checkbox" name="c_hearing" value="value4" /><label for="text4">Rapid heartbeat</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value5" /><label for="text5">Diarrhea</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value6" /><label for="text6">Rapid or difficult breathing</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value7" /><label for="text7">Difficulty swallowing</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value8" /><label for="text8">Runny or stuffy nose</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value9" /><label for="text9">Fatigue</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value10" /><label for="text10">Shortness of breath</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value11" /><label for="text11">Fever</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value12" /><label for="text12">Sneezing</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value13" /><label for="text13">Headache or facial pain</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value14" /><label for="text14">Sore throat</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value15" /><label for="text15">Hoarse voice</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value16" /><label for="text16">Watery or itchy eyes</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value17" /><label for="text17">Loss of appetite</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value18" /><label for="text18">Wheezing</label></li>
-        <li><input type="checkbox" name="c_hearing" value="value19" /><label for="text19">Muscle aches</label></li>
+			<li><input type="checkbox" name="c_hearing" value="value5" /><label for="text5">Diarrhea</label></li>
         </ul>
 
         </div>
@@ -3124,9 +3109,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--CDiarrhea--------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="CDiarrhea">
         <div class="intro-content2">
         <div class="wrap">
@@ -3146,6 +3132,7 @@
 
         <div class="wrapcol">
         <h5>Diarrhea</h5>
+				<input type="hidden" name="disease" value="Diarrhea">
         <h6>Find possible causes of diarrhea based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
         
         <h5>Problem is</h5>
@@ -3198,18 +3185,8 @@
 
         <ul class="checkbox-grid">
             <li><input type="checkbox" name="CDiarrhea" value="value1" /><label for="text1">Abdominal pain or cramping</label></li>
-            <li><input type="checkbox" name="CDiarrhea" value="value2" /><label for="text2">Bloating or abdominal swelling</label></li>
             <li><input type="checkbox" name="CDiarrhea" value="value3" /><label for="text3">Bloody stools</label></li>
-            <li><input type="checkbox" name="CDiarrhea" value="value4" /><label for="text4">Decreased energy or fatigue</label></li>
             <li><input type="checkbox" name="CDiarrhea" value="value5" /><label for="text5">Fever</label></li>
-            <li><input type="checkbox" name="CDiarrhea" value="value6" /><label for="text6">Foul-smelling stools</label></li>
-            <li><input type="checkbox" name="CDiarrhea" value="value7" /><label for="text7">Hallucinations</label></li>
-            <li><input type="checkbox" name="CDiarrhea" value="value8" /><label for="text8">Mucus in stools</label></li>
-            <li><input type="checkbox" name="CDiarrhea" value="value9" /><label for="text9">Muscle or joint aches</label></li>
-            <li><input type="checkbox" name="CDiarrhea" value="value10" /><label for="text10">Nausea or vomiting</label></li>
-            <li><input type="checkbox" name="CDiarrhea" value="value11" /><label for="text11">Passing gas</label></li>
-            <li><input type="checkbox" name="CDiarrhea" value="value12" /><label for="text12">Stomach growling or rumbling</label></li>
-            <li><input type="checkbox" name="CDiarrhea" value="value13" /><label for="text13">Weight loss</label></li>
            
         </ul>
 
@@ -3220,9 +3197,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--CEarache--------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="CEarache">
         <div class="intro-content2">
         <div class="wrap">
@@ -3242,17 +3220,15 @@
 
         <div class="wrapcol">
         <h5>Earache</h5>
+				<input type="hidden" name="disease" value="Earache">
         <h6>Find possible causes of earache based on specific factors. Check one or more factors on this page that apply to your symptom.</h6>
         
         <h5>Triggered by</h5>
 
         <ul class="checkbox-grid">
             <li><input type="checkbox" name="CEarache" value="value1" /><label for="text1">Allergens or other irritants</label></li>
-            <li><input type="checkbox" name="CEarache" value="value2" /><label for="text2">Change in air pressure</label></li>
             <li><input type="checkbox" name="CEarache" value="value3" /><label for="text3">Cold or upper respiratory illness</label></li>
-            <li><input type="checkbox" name="CEarache" value="value4" /><label for="text4">Foreign object in ear</label></li>
             <li><input type="checkbox" name="CEarache" value="value5" /><label for="text5">Injury or trauma</label></li>
-            <li><input type="checkbox" name="CEarache" value="value6" /><label for="text6">Loud, sudden noise</label></li>
             
         </ul>
 
@@ -3264,26 +3240,9 @@
 
         <ul class="checkbox-grid">
             <li><input type="checkbox" name="CEarache" value="value1" /><label for="text1">Bleeding from ear</label></li>
-            <li><input type="checkbox" name="CEarache" value="value2" /><label for="text2">Clear or pus-filled drainage</label></li>
             <li><input type="checkbox" name="CEarache" value="value3" /><label for="text3">Cough</label></li>
-            <li><input type="checkbox" name="CEarache" value="value4" /><label for="text4">Decreased hearing</label></li>
             <li><input type="checkbox" name="CEarache" value="value5" /><label for="text5">Difficulty sleeping or irritability (infant or toddler)</label></li>
-            <li><input type="checkbox" name="CEarache" value="value6" /><label for="text6">Dizziness or spinning sensation</label></li>
-            <li><input type="checkbox" name="CEarache" value="value7" /><label for="text7">Feeling of fullness in ear</label></li>
-            <li><input type="checkbox" name="CEarache" value="value8" /><label for="text8">Fever</label></li>
-            <li><input type="checkbox" name="CEarache" value="value9" /><label for="text9">Headache or facial pain</label></li>
-            <li><input type="checkbox" name="CEarache" value="value10" /><label for="text10">Itchy nose, mouth or throat</label></li>
-            <li><input type="checkbox" name="CEarache" value="value11" /><label for="text11">Mild body aches</label></li>
-            <li><input type="checkbox" name="CEarache" value="value12" /><label for="text12">Nausea or vomiting</label></li>
-            <li><input type="checkbox" name="CEarache" value="value13" /><label for="text13">Redness in ear canal</label></li>
-            <li><input type="checkbox" name="CEarache" value="value14" /><label for="text14">Redness or swelling of outer ear</label></li>
-            <li><input type="checkbox" name="CEarache" value="value15" /><label for="text15">Ringing or buzzing in ear</label></li>
-            <li><input type="checkbox" name="CEarache" value="value16" /><label for="text16">Runny or stuffy nose</label></li>
-            <li><input type="checkbox" name="CEarache" value="value17" /><label for="text17">Scaly or flaking skin on outer ear</label></li>
-            <li><input type="checkbox" name="CEarache" value="value18" /><label for="text18">Sneezing</label></li>
-            <li><input type="checkbox" name="CEarache" value="value19" /><label for="text19">Sore throat</label></li>
-            <li><input type="checkbox" name="CEarache" value="value20" /><label for="text20">Watery or itchy eyes</label></li>
-
+   
         </ul>
 
         </div>
@@ -3293,9 +3252,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--CEYE--------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="CEYE">
         <div class="intro-content2">
         <div class="wrap">
@@ -3321,13 +3281,9 @@
 
         <ul class="checkbox-grid">
             <li><input type="checkbox" name="CEYE" value="value1" /><label for="text1">Ache</label></li>
-            <li><input type="checkbox" name="CEYE" value="value2" /><label for="text2">Sensitivity to light</label></li>
-        <li><input type="checkbox" name="CEYE" value="value3" /><label for="text3">Dry or itchy</label></li>
-        <li><input type="checkbox" name="CEYE" value="value4" /><label for="text4">Severe pain</label></li>
-        <li><input type="checkbox" name="CEYE" value="value5" /><label for="text5">Gritty sensation</label></li>
-        <li><input type="checkbox" name="CEYE" value="value6" /><label for="text6">Stinging or burning sensation</label></li>
-        <li><input type="checkbox" name="CEYE" value="value7" /><label for="text7">Redness without actual discomfort</label></li>
-        </ul>
+			<li><input type="checkbox" name="CEYE" value="value3" /><label for="text3">Dry or itchy</label></li>
+			<li><input type="checkbox" name="CEYE" value="value5" /><label for="text5">Gritty sensation</label></li>
+			</ul>
 
         </div>
         
@@ -3336,12 +3292,8 @@
 
         <ul class="checkbox-grid">
             <li><input type="checkbox" name="CEYE" value="value1" /><label for="text1">Bleeding on the surface of the white of the eye</label></li>
-            <li><input type="checkbox" name="CEYE" value="value2" /><label for="text2">Redness</label></li>
             <li><input type="checkbox" name="CEYE" value="value3" /><label for="text3">Crusted eyelashes after sleeping</label></li>
-            <li><input type="checkbox" name="CEYE" value="value4" /><label for="text4">Stringy mucus in or around the eye</label></li>
             <li><input type="checkbox" name="CEYE" value="value5" /><label for="text5">Excessive tearing</label></li>
-            <li><input type="checkbox" name="CEYE" value="value6" /><label for="text6">Swelling around the eye</label></li>
-            <li><input type="checkbox" name="CEYE" value="value7" /><label for="text7">Red, painful lump on the eyelid</label></li>
         </ul>
 
         </div>
@@ -3393,9 +3345,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--CFever--------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="CFever">
         <div class="intro-content2">
         <div class="wrap">
@@ -3458,9 +3411,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--CHeadaches--------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="CHeadaches">
         <div class="intro-content2">
         <div class="wrap">
@@ -3601,9 +3555,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--CJointPain--------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="CJointPain">
         <div class="intro-content2">
         <div class="wrap">
@@ -3743,9 +3698,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--CNasalCongestion--------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="CNasalCongestion">
         <div class="intro-content2">
         <div class="wrap">
@@ -3823,9 +3779,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--CNauseaOrVomiting--------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="CNauseaOrVomiting">
         <div class="intro-content2">
         <div class="wrap">
@@ -3897,9 +3854,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--CSkinRashes--------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="CSkinRashes">
         <div class="intro-content2">
         <div class="wrap">
@@ -3988,9 +3946,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--CSoreThroat--------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="CSoreThroat">
         <div class="intro-content2">
         <div class="wrap">
@@ -4045,9 +4004,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--CUrinaryProblems--------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="CUrinaryProblems">
         <div class="intro-content2">
         <div class="wrap">
@@ -4116,9 +4076,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--CVisionProblems--------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="CVisionProblems">
         <div class="intro-content2">
         <div class="wrap">
@@ -4225,9 +4186,10 @@
     </div>
     
 </div>
+</form>
 -->
 <!--CWheezing--------------------------------------------------------------------------------------------------------
-
+<form action="submitcase" id="myform" method="post">
 <div id="CWheezing">
         <div class="intro-content2">
         <div class="wrap">
@@ -4316,11 +4278,10 @@
     </div>
     
 </div>
+</form>
 
 -->
-</form>
 <!---------------------------------------------------------------------------------------------------------->
-
 	<footer>
 	
 		<div class="container">

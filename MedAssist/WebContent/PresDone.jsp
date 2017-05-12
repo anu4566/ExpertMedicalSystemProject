@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Prescription</title>
+    <title>Appointment Confirmation</title>
 	
     <!-- css -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -79,15 +79,18 @@
     </nav>
     <div>
  
-<!-- -------------------------------------------------------------------------------------------------- -->
-<div class="pre-box" id="printableArea">
-<img style="margin-left: auto;margin-right: auto;" src="img/logo.png" alt="" width="150" height="40" /><br><br>
-<div>
-</br>
-<div class="h4" style="margin-left: auto;margin-right: auto;">	
 
-<strong>Your Appointment is scheduled.Please check your email for further details.</strong>
+<!-- -------------------------------------------------------------------------------------------------- -->
+
+<div class="intro-content1" >
+	<div style="margin-left: 45%;">
+ 		<img src="img/logo.png" alt="" width="150" height="40" /><br><br>
+ 	</div>
+ 	<div>
+	<h2	 style="margin-left: 10%;margin-right: 10%;color: #3fbbc0;"><strong>Your Appointment is scheduled.Please check your email for further details.</strong></h2>
+	</div>
 </div>
+<!-- -------------------------------------------------------------------------------------------------- -->
 
 
 	<footer>
