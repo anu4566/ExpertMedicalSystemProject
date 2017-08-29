@@ -149,6 +149,8 @@
     													
     													<input type="text" name="lname" pattern="[A-Za-z]+" required id="lname" class="form-control input-md" data-rule="minlen:3" data-msg="Please enter at least 3 chars" placeholder="Enter your Last name">
     													
+    													<input type="text" name="email"  pattern="[A-Za-z@]+ required id="email" class="form-control input-md" data-rule="minlen:3" data-msg="Please enter a valid email" placeholder="Enter your Email Id">
+    													
     													
     													<input type="password" name="pwd" pattern=".{6,}" title="Six or more characters" required id="pwd" class="form-control input-md" data-rule="minlen:3" data-msg="Please enter at least 3 chars" placeholder="Enter your password">
     														<%String hidden = session.getAttribute("hiddenVal").toString();%>
