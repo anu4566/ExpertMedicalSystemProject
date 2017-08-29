@@ -1,6 +1,7 @@
 package com.medical.dao;
 
 import java.net.URI;
+import java.util.Collections;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -27,14 +28,14 @@ public class Dao {
 	}
 
 	public Connection getConnection() throws SQLException, URISyntaxException {
-		/*URI dbUri = new URI("postgres://jelewisrldyrth:a9b6097a481766bce6e224157501ac76ed095299e4d98aa43b8e38189938436a@ec2-107-22-236-252.compute-1.amazonaws.com:5432/d2ores75b71fu8");
-		String username= "jelewisrldyrth";
-		String password="a9b6097a481766bce6e224157501ac76ed095299e4d98aa43b8e38189938436a";
+		URI dbUri = new URI("postgres://qxhovbtzauonki:9acdea624ee56076766a749a2ae750c429ef96419a1dfa8dec4adffce98f3c3c@ec2-54-163-236-33.compute-1.amazonaws.com:5432/deedtrcim34s6d");
+		String username= "qxhovbtzauonki";
+		String password="9acdea624ee56076766a749a2ae750c429ef96419a1dfa8dec4adffce98f3c3c";
 		String dbUrl = "jdbc:postgresql://"+dbUri.getHost()+':'+dbUri.getPort()+dbUri.getPath();
-		return DriverManager.getConnection(dbUrl,username,password);*/
+		return DriverManager.getConnection(dbUrl,username,password);
 		
 		
-		Connection connection = null;
+		/*Connection connection = null;
 		try
 		{
 		connection = DriverManager.getConnection(
